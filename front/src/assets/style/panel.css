@@ -1,0 +1,100 @@
+
+.panel {
+	padding: 1rem 0;
+	margin-top: -0.5rem !important;
+	margin-bottom: 2rem !important;
+	text-align: center;
+	overflow: hidden;
+	margin: 1rem auto;  /* old school centering */
+}
+
+.panel header{
+	transform: skew( 0deg ,-3deg);
+	position: relative;
+	box-sizing: border-box;
+	margin-bottom: 2rem;
+}
+.panel header p{
+
+}
+
+.header-shadow {
+	box-shadow: 0 5px 5px hsl(10,1%,45%);
+	-webkit-box-shadow: 0 5px 5px hsl(10,1%,45%);
+	-moz-box-shadow: 0 5px 5px hsl(10,1%,45%);
+} 
+
+.panel header .title{
+	margin: unset;
+	padding: unset;
+	font-size: 1.5rem;
+}
+
+
+.panel .options{
+	/*position: relative;*/
+}
+.panel .options .button{
+	padding: 0 .1rem;
+	margin: 0.2rem .1rem !important;
+	transform: scale(0.9);
+}
+
+.panel main{
+	margin: 0.5rem var( --margin-screen-large );
+	min-height: 2rem;
+	position: relative;
+}
+
+
+.panel main .label{
+	font-weight: 700;
+}
+
+.panel footer{
+	min-height: 0.33rem;
+	padding-bottom: 0.33rem;
+	margin: 0 var( --margin-screen-large );
+}
+
+
+@media only screen and (max-width: 320px) {
+	.panel header .title{
+		/*padding-top: rem;*/
+	}
+	.panel main{
+		margin: 0.5rem var( --margin-screen-small );
+	}
+	.panel footer{
+		margin: 0 var( --margin-screen-small );
+	}
+}
+
+
+@media only screen and (max-width: 400px) {
+	.panel header .title{
+		/*padding-top: 0.5rem;*/
+	}
+	.panel main{
+		margin: 0.5rem var( --margin-screen-med );
+	}
+	.panel footer{
+		margin: 0 var( --margin-screen-med );
+	}
+}
+
+
+@media only screen and (min-width: 600px) {
+	.panel header .title{
+		/*padding-top: 0.25rem;*/
+	}
+	.panel main{
+		margin: 0.5rem var( --margin-screen-small );
+	}
+	.panel footer{
+		margin: 0 var( --margin-screen-small );
+	}
+}
+
+
+

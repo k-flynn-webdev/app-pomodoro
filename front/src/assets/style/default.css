@@ -1,0 +1,356 @@
+:root{
+	--margin-screen-small: 0.5rem;
+	--margin-screen-med: 1rem;
+	--margin-screen-large: 1.5rem;
+
+	--padding-screen-small: 0.5rem;
+	--padding-screen-med: 0.8rem;
+	--padding-screen-large: 1.25rem;	
+
+	--btn-height-screen-small: 1.5rem;
+	--btn-height-screen-med: 1.5rem;
+	--btn-height-screen-large: 1.5rem;
+
+	--row-height-screen-small: 1.75rem;
+	--row-height-screen-med: 1.75rem;
+	--row-height-screen-large: 1.75rem;
+
+	--navbar-height: 4rem;
+	--footer-height: 4rem;
+}
+
+
+.no-click {
+	pointer-events: none;
+}
+.no-wrap {
+	white-space: nowrap;
+	text-overflow: clip;
+}
+
+.width-95{
+	width: 95%;
+	max-width: 27rem;
+}
+.width-90{
+	width: 90%;
+	max-width: 25rem;
+}
+.width-85{
+	width: 85%;
+	max-width: 23rem;
+}
+
+.fill-all{
+	position: fixed;
+	left: -10rem;
+	right: -10rem;
+	top: -10rem;
+	bottom: -10rem;
+	z-index: 10;
+}
+
+.center-auto-h{
+	margin: 0 auto;
+}
+.center-force-h{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#app {
+	padding: 0;
+	display: block;
+	width: 100%;
+}
+
+#app {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+}
+
+#nav {
+	padding: 30px;
+}
+
+
+
+html {
+	padding: 0;
+	margin: 0;
+	min-height: 100vh;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	margin: 0;	
+	padding: 0;
+	/*padding-top: var( --navbar-height );*/
+	height: 100%;
+	/*min-height: calc(100vh - var( --navbar-height ) );*/
+	min-height: calc(100vh);
+
+	background-color: var( --colour-bg );	
+}
+
+body, #app, footer, .footer {
+	position: relative;
+}
+
+.br-small {
+	min-height: 0.8rem;
+}
+
+li{
+	padding: .25rem;
+}
+
+button, .button {
+	background-color: var( --colour-button );
+	height: var( --btn-height-screen-large );
+	border-radius: var( --border-radius-button );
+	border: none;
+	outline: none;
+	position: relative;
+	min-width: 4.5rem;
+	transition: transform .2s, background-color 1s;
+}
+button:hover, .button:hover {
+	transform: scale(1.085);
+}
+
+.button p, button p{
+	font-weight: 500;
+	letter-spacing: 0.1em;
+}
+
+
+/*button:focus, .button:focus {
+	background-color: var( --colour-button-focus );
+}*/
+
+button, .button .text {
+	text-transform: uppercase;
+}
+
+.field{
+	position: relative;
+	text-align: left;
+	display: flex;
+	flex-direction: row;
+	margin: 0.75rem 0;
+	align-items: center;
+}
+
+.field-column {
+	position: relative;
+	text-align: center;
+	flex-direction: column;
+}
+
+.field-column .label{
+	margin: 0.5rem;
+	margin-bottom: 1rem;
+
+}
+
+label, .label{
+	flex: 0;
+	min-width: 5.5rem;
+	position: relative;
+}
+
+
+
+.input-container {
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	border: unset;
+	outline: unset;
+	outline-offset: 0;	
+	flex: 1;
+	height: var( --row-height-screen-large );
+}
+
+input, textarea, .input, form, .form {
+	box-sizing: border-box;
+	border: unset;
+	outline: unset;
+	outline-offset: 0;
+}
+
+input ,textarea, .input{
+	outline: 2px solid var( --colour-outline );
+	overflow: hidden;
+	height: var( --row-height-screen-large );
+	width: 100%;
+	padding: 0 0.5rem !important;
+	
+	flex: 1;
+	background-color: var( --colour-input );
+	transition: 0.5s ease;
+}
+textarea {
+	padding-top: .25rem !important;
+}
+
+input:focus, .input:focus , textarea:focus {	
+	outline: 2px solid var( --colour-accent );
+}
+
+.input-add {
+	width: 1.5rem;
+	height: 1.5rem;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	top: -.15rem;
+	right: -2rem;
+}
+.input-add .pin{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	height: 100%;
+}
+.input-add .pin span{
+	display: inline-block;
+	position: absolute;
+	width: 17%;
+	height: 70%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.input-add .pin span:nth-child(1){
+	width: 70%;
+	height: 17%;
+}
+
+.shadow {
+	box-shadow: 0 10px 10px var( --colour-shadow );
+	-webkit-box-shadow: 0 10px 10px var( --colour-shadow );
+	-moz-box-shadow: 0 10px 10px var( --colour-shadow );
+}
+
+
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+
+@media only screen and (min-width: 600px) {
+	.flex-only-on-large {
+		margin: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.flex-only-on-large .width-90 {
+		margin: 0.5rem;
+		flex-shrink: 1;
+		flex-grow: 1;
+		min-width: unset;
+		max-width: 23.5rem;
+	}	
+
+}
+
+
+.flex-row-between {
+	justify-content: space-between;
+}
+.flex-row-even {
+	justify-content: space-evenly;
+}
+.flex-row-start {
+	justify-content: flex-start;
+}
+.flex-row-end {
+	justify-content: flex-end;
+}
+
+.flex-align-start {
+	align-items: flex-start;
+}
+.flex-align-center {
+	align-items: center;
+}
+.flex-align-end {
+	align-items: flex-end;
+}
+
+.flex-0{
+	flex: 0;
+}
+.flex-1{
+	flex: 1;
+}
+
+@media only screen and (max-width: 400px) {
+	body{
+	}
+	button , .button , input, .input {
+		height: var( --btn-height-screen-med );
+	}
+	input ,.input{
+		height: var( --row-height-screen-med );
+	}	
+	.width-95{
+		width: 97%;
+	}
+	.width-90{
+		width: 93%;
+	}
+	.width-85{
+		width: 88%;
+	}
+	
+}
+
+@media only screen and (max-width: 320px) {
+	body{
+	}
+	button , .button , input, .input {
+		height: var( --btn-height-screen-small );
+	}
+	input ,.input{
+		height: var( --row-height-screen-small );
+	}
+	.width-95{
+		width: 98.5%;
+	}
+	.width-90{
+		width: 96%;
+	}
+	.width-85{
+		width: 92%;
+	}
+	
+}
+
+/*
+
+
+.fade-in {
+	animation: anim-fade-in 0.33s ease-in-out 1 backwards;
+}
+
+@keyframes anim-fade-in {
+	0% { opacity: 0; transform: scale(1.2); }
+	100% { opacity: 1; transform: scale(1); }
+}
+
+*/

@@ -1,0 +1,34 @@
+
+
+requirements :
+
+	online (no web api needed just a dl only)
+	offline (able to save as app and open with no network)
+	app notify (when a timer completes a chime should play or notify)
+
+
+Start:
+
+	different timers : 
+		break 5 mins
+		work 25 mins
+
+	options in progress : 
+		pause
+		stop
+		reset
+
+	start timer.
+	visually show progress nicely.
+	alert at the end of completion.
+	if not visible should notify user after completion.
+
+
+
+
+
+
+
+
+
+

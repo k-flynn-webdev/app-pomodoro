@@ -1,6 +1,6 @@
 {
-  "name": "front",
-  "short_name": "front",
+  "name": "app_pomodoro",
+  "short_name": "pomodoro",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

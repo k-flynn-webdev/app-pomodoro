@@ -1,0 +1,24 @@
+
+web server static server.
+
+-main page
+
+	animated transition fancy waterfall effect
+
+	start button
+	visual progress
+
+	options 
+		start
+		stop
+		reset
+
+-web notify to install as app
+
+
+-learn service worker?
+	-start a worker
+	-stop a worker
+	-notify result
+
+

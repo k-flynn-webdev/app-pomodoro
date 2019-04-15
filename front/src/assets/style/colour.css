@@ -1,0 +1,183 @@
+
+:root {
+
+	--colour-bg: hsl(250,50%,15%);
+	
+	--colour-bg-inv: hsla(35,30%,90%,1);
+
+
+	--colour-outline: hsla(33,20%,15%,0.5);
+	--colour-accent: hsla(100,50%,50%,1);
+
+	--colour-text-positive: hsla(100, 40%, 50%, 1.0);
+	--colour-text-negative: hsla(1, 40%, 50%, 1.0);
+
+	--colour-success: hsla(100, 35%, 80%, 1.0);
+	--colour-warning: hsla(50, 55%, 80%, 1.0);
+
+	--colour-button: hsla(33,20%,15%,1);
+
+	--colour-input: hsla(1,1%,97%,0.66);
+
+
+
+	/*--colour-panel-header: hsla(33,20%,15%,1);*/
+
+	/*--colour-bg: hsla(177, 8%, 53%, 1.0);*/
+	/*--colour-nav: hsla(177, 10%,35%, 1.0);*/
+
+
+
+	/*--colour-hover: hsla(177,50%,50%,0.5);*/
+	/*--colour-focus: hsla(177,50%,50%,0.75);*/
+
+
+	/*--colour-panel: hsla(30, 10%, 96%, 1.0);*/
+	
+	/*--colour-input: hsla(177, 10%, 85%, 1.0);*/
+	/*--colour-input-pre: hsla(177, 10%, 92%, 1.0);*/
+	/*--colour-input-focus: hsla(177, 33%, 80%, 1.0);*/
+	/**/
+	/*--colour-button: hsla(177, 8%, 20%, 1.0);*/
+	/*--colour-button-focus: hsla(177, 40%, 40%, 1.0);*/
+
+	/*--colour-shadow: hsla(177, 8%, 20%, 0.5);*/
+	
+	/*--colour-text-light: hsla(30, 10%, 96%, 1.0);*/
+	/*--colour-text-dark: hsla(177, 8%, 20%, 1.0);*/
+
+
+	
+
+	/*--colour-error: hsla(1, 35%, 80%, 1.0);*/
+
+}
+
+
+.colour-on-hover:hover {
+	background-color: var( --colour-hover ); 
+}
+.colour-on-focus:focus {
+	outline: none;
+	background-color: var( --colour-focus ); 
+}
+
+/*.input, input {*/
+	/*outline: 2px solid var( --colour-bg-inv );*/
+/*}*/
+
+.colour-positive {
+	color: var( --colour-text-positive ) !important;
+	fill: var( --colour-text-positive ) !important;
+}
+.colour-negative {
+	color: var( --colour-text-negative ) !important;
+	fill: var( --colour-text-negative ) !important;
+}
+.colour-positive-bg {
+	background-color: var( --colour-text-positive ) !important;
+}
+.colour-negative-bg {
+	background-color: var( --colour-text-negative ) !important;
+}
+
+/*.colour-yellow {
+	background-color: hsl(40,75%,55%) !important;
+}*/
+
+/*.light {
+	background-color: hsla(177, 8%, 95%, 0.9);
+}	
+.dark {
+	background-color: hsla(177, 8%, 20%, 0.9);
+}*/
+
+.shade {
+	background-color: hsla(177, 8%, 20%, 0.75);
+}
+
+
+
+.colour-accent {
+	background-color: var( --colour-accent );
+}
+
+
+.colour-bg{
+	background-color: var( --colour-bg );
+}
+.colour-bg-inv{
+	background-color: var( --colour-bg-inv );
+}
+.colour-fill-bg{
+	color: var( --colour-bg );
+	fill: var( --colour-bg );
+}
+.colour-fill-bg-inv{
+	color: var( --colour-bg-inv );
+	fill: var( --colour-bg-inv );
+}
+
+.colour-accent{
+	background-color: yellow;
+}
+.colour-icon{
+	color: white;
+	fill: white;
+}
+.colour-container{
+	background-color: transparent;
+}
+
+/*.colour-panel{
+	background-color: var( --colour-panel );
+}*/
+
+/*.colour-panel-header{
+	background-color: hsla(10,10%,10%,1);
+}*/
+
+
+.colour-light{
+	background-color: hsl(100,10%,80%);
+}
+.colour-dark{
+	background-color: hsl(100,10%,20%);
+}
+
+.colour-text-light{
+	color: var( --colour-bg-inv );
+	fill: var( --colour-bg-inv );
+}
+.colour-text-dark{
+	color: var( --colour-bg );
+	fill: var( --colour-bg );
+}
+
+
+
+
+
+
+
+/*.colour-header .title {
+	color: hsla(10,10%,90%,1);
+}*/
+
+
+/*.colour-title{
+	
+}
+.colour-text{
+	
+}*/
+
+
+
+
+
+
+
+
+
+
