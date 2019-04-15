@@ -6,8 +6,7 @@
 			ref="timer"
 			class="timer">
 			<div 
-				
-				class="timer-bg anim-6"
+				class="timer-bg"
 				v-bind:class=getClass
 				v-bind:style=getHeight>	
 			</div>
@@ -46,6 +45,12 @@
 
 export default {
 	name: 'cTimeBG',
+	data(){
+		return {
+			lastUpdate : 0,
+			incrementVar : .0075,
+		}
+	},	
 	props : {
 		start : Number,
 		input : Number,
@@ -86,17 +91,37 @@ export default {
 
 
 		getHeight : function(){
-			let heightVar = (this.input / this.start) * 100;
-			return { 'height' : heightVar + '%' };
+			let heightVar = (this.input / this.start) * (1 + this.incrementVar);
+			let diff = Math.abs( heightVar - this.lastUpdate );
+			
+			if( diff >= this.incrementVar ){
+				this.lastUpdate = heightVar;
+			}			
+
+			return { 'transform' : 'scaleY(' + this.lastUpdate + ')' };
 		},
 		getClass : function(){
+
+			let baseClass = 'timer-bg'
+			let animClass = ' anim-1'
+
+			if( this.start > 120 ){
+				animClass = ' anim-3'
+			}
+			if( this.start > 300 ){
+				animClass = ' anim-6'
+			}
+			if( this.start > 700 ){
+				animClass = ' anim-10'
+			}
+
 			if( this.input <= 1 ){
-				return 'timer-bg anim-6 hide';
+				return baseClass + animClass + ' hide';
 			}
 			if( this.input >= 99 ){
-				return 'timer-bg anim-6 hide';
+				return baseClass + animClass + ' hide';
 			}
-			return 'timer-bg anim-6 ';
+			return baseClass + animClass;
 		},
 	},
 
@@ -127,14 +152,17 @@ export default {
 		width: 100%;
 		height: 100%;
 		z-index: -1;
-		pointer-events: none;	
+		pointer-events: none;
+		overflow: hidden;
 	}
 
 	.timer-bg {
+		transform-origin: top left;
+		transform: scaleY(0);
 		position: absolute;
 		z-index: -1;
 		width: 100%;
-		height: 0;
+		height: 100%;
 		background-color: darkred;
 		opacity: 1;
 	}

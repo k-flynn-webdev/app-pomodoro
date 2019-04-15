@@ -82,7 +82,7 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 200,
+				timer : 10*60,
 			},
 		}
 	},
