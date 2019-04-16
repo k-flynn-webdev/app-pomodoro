@@ -41,7 +41,7 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 3*60,
+				timer : 110*60,
 				mode : 'stop',
 			},
 		}
@@ -91,7 +91,7 @@ export default {
 		position: absolute;
 		z-index: 5;
 		left: 0;
-		bottom:25%;
+		bottom:15%;
 		width: 100%;
 		/*height: 30vh;*/
 		text-align: center;

@@ -27,24 +27,42 @@
 
 			<div class="row">
 
-				<p 
+				<div 
 					v-if=hasHours 
-					class="header hours">
-						
-						{{ getHours }}
-				</p>
-				<p 
+					class="number">
+
+					<p class="value hours header">
+							{{ getHours }}
+					</p>					
+
+					<p class="hrs">H</p>
+
+				</div>
+
+				<div 
 					v-if=hasMins 
-					class="header mins">
-						
-						{{ getMins }} 
-				</p>
-				<p 
+					class="number">
+
+					<p class="value mins header">
+							{{ getMins }}
+					</p>					
+
+					<p class="mns">M</p>
+
+				</div>
+
+				<div 
 					v-if=hasSeconds 
-					class="header seconds">
-						
-						{{ getSeconds }}
-				</p>
+					class="number">
+
+					<p class="value seconds header">
+							{{ getSeconds }}
+					</p>					
+
+					<p class="secs">S</p>
+
+				</div>
+
 			
 			</div>
 
@@ -213,26 +231,41 @@ export default {
 
 	.hours,.mins,.seconds {
 		display: inline-block;
-		margin: .5rem;
+		margin: .75rem;
+	}
+
+	.number {
+		display: inline-block;
+		position: relative;
+	}
+
+	.hrs,.mns,.secs{
+		display: inline-block;
+		position: absolute;
+		z-index: 1;
+		bottom: 5%;
+		right: 5%;
 	}
 
 	.hide {
 		/*opacity: 0;*/
 	}
 
-	/*.timer-tick div{
-		animation: anim-timer-ticker 1s;
+	.value {
+		animation: anim-value-tick .3s;
 	}
 
-	
-	@keyframes anim-timer-ticker {
+	@keyframes anim-value-tick {
 		0% {
-			transform: translateX(0);
-		}		
-		100% {
-			transform: translateX(100%);
+			transform: scale(.8);
 		}
-	}*/
+		70% {
+			transform: scale(1.05);
+		}			
+		100% {
+			transform: scale(1);
+		}
+	}
 
 
 </style>
