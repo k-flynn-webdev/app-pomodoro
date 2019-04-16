@@ -5,11 +5,25 @@
 		<div 
 			ref="timer"
 			class="timer">
+			
 			<div 
 				class="timer-bg"
 				v-bind:class=getClass
-				v-bind:style=getHeight>	
+				v-bind:style=getHeightBar>	
 			</div>
+
+			<div 
+				class="timer-bg bar-1"
+				v-bind:class=getClass
+				v-bind:style=getHeightBar1>
+			</div>
+
+			<div 
+				class="timer-bg bar-2"
+				v-bind:class=getClass
+				v-bind:style=getHeightBar2>
+			</div>
+
 
 			<div class="row">
 
@@ -49,6 +63,9 @@ export default {
 		return {
 			lastUpdate : 0,
 			incrementVar : .0075,
+			attrs : {
+				bar_heights : [.33,2],
+			},
 		}
 	},	
 	props : {
@@ -93,16 +110,26 @@ export default {
 		getHeight : function(){
 			let heightVar = (this.input / this.start) * (1 + this.incrementVar);
 			let diff = Math.abs( heightVar - this.lastUpdate );
-			
+			this.ticked = false;
+
 			if( diff >= this.incrementVar ){
 				this.lastUpdate = heightVar;
-			}			
-
-			return { 'transform' : 'scaleY(' + this.lastUpdate + ')' };
+			}
+			return this.lastUpdate;		
 		},
+		getHeightBar : function(){
+			return { 'transform' : 'scaleY(' + this.getHeight + ')' };
+		},
+		getHeightBar1 : function(){
+			return { 'transform' : 'translateY(-' + this.attrs.bar_heights[0] + 'rem) scaleY(' + this.getHeight + ')' };
+		},
+		getHeightBar2 : function(){
+			return { 'transform' : 'translateY(-' + this.attrs.bar_heights[1] + 'rem) scaleY(' + this.getHeight + ')' };
+		},
+
+
 		getClass : function(){
 
-			let baseClass = 'timer-bg'
 			let animClass = ' anim-1'
 
 			if( this.start > 120 ){
@@ -116,12 +143,13 @@ export default {
 			}
 
 			if( this.input <= 1 ){
-				return baseClass + animClass + ' hide';
+				return animClass + ' hide';
 			}
 			if( this.input >= 99 ){
-				return baseClass + animClass + ' hide';
+				return animClass + ' hide';
 			}
-			return baseClass + animClass;
+
+			return animClass;
 		},
 	},
 
@@ -163,9 +191,18 @@ export default {
 		z-index: -1;
 		width: 100%;
 		height: 100%;
-		background-color: darkred;
+		background-color: hsla(100,77%,85%,1);
+		box-sizing: border-box;
 		opacity: 1;
 	}
+
+	.timer-bg.bar-1 {
+		background-color: hsla(33,77%,77%,1);
+	}
+	.timer-bg.bar-2 {
+		background-color: hsla(0,77%,60%,1);
+	}
+
 
 	.timer .row {
 		position: absolute;
@@ -182,6 +219,20 @@ export default {
 	.hide {
 		/*opacity: 0;*/
 	}
+
+	/*.timer-tick div{
+		animation: anim-timer-ticker 1s;
+	}
+
+	
+	@keyframes anim-timer-ticker {
+		0% {
+			transform: translateX(0);
+		}		
+		100% {
+			transform: translateX(100%);
+		}
+	}*/
 
 
 </style>

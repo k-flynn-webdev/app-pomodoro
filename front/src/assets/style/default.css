@@ -63,6 +63,8 @@
 	padding: 0;
 	display: block;
 	width: 100%;
+	min-height: 100%;
+	position: absolute;
 }
 
 #app {
@@ -99,7 +101,7 @@ body {
 	background-color: var( --colour-bg );	
 }
 
-body, #app, footer, .footer {
+body, footer, .footer {
 	position: relative;
 }
 

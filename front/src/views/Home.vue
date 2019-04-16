@@ -9,59 +9,17 @@
 
 		<p class="text text-bold text-light"> Pomodora App </p>
 
+		<div class="controls">
 
-		<!-- <input 
-			v-model=app.time
-			type="number" 
-			name=""> -->
+			<c-time-control
+				v-bind:play=play
+				v-bind:pause=pause
+				v-bind:stop=stop
+				v-bind:resume=resume
+				v-bind:reset=reset>
+			</c-time-control>
 
-		<button
-			class="button"
-			v-on:click=start>
-
-			<p class="text text-bold">
-				Start
-			</p>
-
-		</button>
-
-		<button
-			class="button"
-			v-on:click=continue_on>
-
-			<p class="text text-bold">
-				Continue
-			</p>
-
-		</button>
-
-		<button
-			class="button"
-			v-on:click=pause>
-
-			<p class="text text-bold">
-				Pause
-			</p>
-
-		</button>
-
-		<button
-			v-on:click=stop>
-			
-			<p class="text text-bold">
-				Stop
-			</p>
-
-		</button>
-
-		<button
-			v-on:click=reset>
-			
-			<p class="text text-bold">
-				Reset
-			</p>
-
-		</button>		
+		</div>
 
 	</div>
 	
@@ -71,6 +29,7 @@
 <script>
 // @ is an alias to /src
 import TimeBG from '@/components/c_time_bg.vue';
+import TimeControl from '@/components/c_time_controller.vue';
 
 import { timer } from '../mixins/m_timer.js';
 
@@ -82,14 +41,16 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 10*60,
+				timer : 3*60,
+				mode : 'stop',
 			},
 		}
 	},
+
 	methods : {
 
-		start : function(){
-			console.log('start');
+		play : function(){
+			console.log('play');
 			this.app.time = 0;
 			this.timer_setup( 0, this.app.timer, this.update );
 			this.timer_start();
@@ -98,8 +59,8 @@ export default {
 			console.log('paused');
 			this.timer_stop();
 		},		
-		continue_on : function(){
-			console.log('continue');
+		resume : function(){
+			console.log('resume');
 			this.timer_start();
 		},
 		stop : function(){
@@ -119,6 +80,21 @@ export default {
 	},
 	components: {
 		'c-time-bg' : TimeBG,
+		'c-time-control' : TimeControl,
 	},
 }
 </script>
+
+<style scoped>
+	
+	.controls {
+		position: absolute;
+		z-index: 5;
+		left: 0;
+		bottom:25%;
+		width: 100%;
+		/*height: 30vh;*/
+		text-align: center;
+	}
+
+</style>
