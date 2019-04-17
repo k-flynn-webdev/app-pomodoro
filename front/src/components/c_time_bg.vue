@@ -1,6 +1,6 @@
 <template>
 
-	<div ref="parent">
+	<!-- <div ref="parent">
 
 		<div 
 			ref="timer"
@@ -27,7 +27,7 @@
 		</div>
 
 	</div>
-
+ -->
 </template>
 
 <script>
@@ -36,11 +36,11 @@ export default {
 	name: 'cTimeBG',
 	data(){
 		return {
-			lastUpdate : 0,
-			incrementVar : .0075,
-			attrs : {
-				bar_heights : [.33,2],
-			},
+			// lastUpdate : 0,
+			// incrementVar : .0075,
+			// attrs : {
+			// 	bar_heights : [.33,2],
+			// },
 		}
 	},	
 	props : {
@@ -49,59 +49,60 @@ export default {
 	},
 	computed : {
 
-		getHeight : function(){
-			let heightVar = (this.input / this.start) * (1 + this.incrementVar);
-			let diff = Math.abs( heightVar - this.lastUpdate );
-			this.ticked = false;
+		// getHeight : function(){
+		// 	let heightVar = (this.input / this.start) * (1 + this.incrementVar);
+		// 	let diff = Math.abs( heightVar - this.lastUpdate );
+		// 	this.ticked = false;
 
-			if( diff >= this.incrementVar ){
-				this.lastUpdate = heightVar;
-			}
-			return this.lastUpdate;		
-		},
-		getHeightBar : function(){
-			return { 'transform' : 'scaleY(' + this.getHeight + ')' };
-		},
-		getHeightBar1 : function(){
-			return { 'transform' : 'translateY(-' + this.attrs.bar_heights[0] + 'rem) scaleY(' + this.getHeight + ')' };
-		},
-		getHeightBar2 : function(){
-			return { 'transform' : 'translateY(-' + this.attrs.bar_heights[1] + 'rem) scaleY(' + this.getHeight + ')' };
-		},
+		// 	if( diff >= this.incrementVar ){
+		// 		this.lastUpdate = heightVar;
+		// 	}
+		// 	return this.lastUpdate;		
+		// },
+		// getHeightBar : function(){
+		// 	return { 'transform' : 'scaleY(' + this.getHeight + ')' };
+		// },
+		// getHeightBar1 : function(){
+		// 	return { 'transform' : 'translateY(-' + this.attrs.bar_heights[0] + 'rem) scaleY(' + this.getHeight + ')' };
+		// },
+		// getHeightBar2 : function(){
+		// 	return { 'transform' : 'translateY(-' + this.attrs.bar_heights[1] + 'rem) scaleY(' + this.getHeight + ')' };
+		// },
 
 
-		getClass : function(){
+		// getClass : function(){
 
-			let animClass = ' anim-1'
+		// 	let animClass = ' anim-1'
 
-			if( this.start > 120 ){
-				animClass = ' anim-3'
-			}
-			if( this.start > 300 ){
-				animClass = ' anim-6'
-			}
-			if( this.start > 700 ){
-				animClass = ' anim-10'
-			}
+		// 	if( this.start > 120 ){
+		// 		animClass = ' anim-3'
+		// 	}
+		// 	if( this.start > 300 ){
+		// 		animClass = ' anim-6'
+		// 	}
+		// 	if( this.start > 700 ){
+		// 		animClass = ' anim-10'
+		// 	}
 
-			if( this.input <= 1 ){
-				return animClass + ' hide';
-			}
-			if( this.input >= 99 ){
-				return animClass + ' hide';
-			}
+		// 	if( this.input <= 1 ){
+		// 		return animClass + ' hide';
+		// 	}
+		// 	if( this.input >= 99 ){
+		// 		return animClass + ' hide';
+		// 	}
 
-			return animClass;
-		},
+		// 	return animClass;
+		// },
 	},
 
 	mounted(){
-		document.body.appendChild( this.$refs.timer );
+		console.log( this.$refs.bg_panel );
+	// 	document.body.appendChild( this.$refs.timer );
 	},
-	beforeDestroy(){
-		document.body.removeChild( this.$refs.timer );	
-		this.$refs.parent.appendChild( this.$refs.timer );
-	},
+	// beforeDestroy(){
+	// 	document.body.removeChild( this.$refs.timer );	
+	// 	this.$refs.parent.appendChild( this.$refs.timer );
+	// },
 	
 }
 
@@ -113,7 +114,7 @@ export default {
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		z-index: -1;
+		/*z-index: -1;*/
 		pointer-events: none;
 		overflow: hidden;
 	}
@@ -122,7 +123,7 @@ export default {
 		transform-origin: top left;
 		transform: scaleY(0);
 		position: absolute;
-		z-index: -1;
+		/*z-index: -1;*/
 		width: 100%;
 		height: 100%;
 		/*background-color: hsla(100,77%,85%,1);*/

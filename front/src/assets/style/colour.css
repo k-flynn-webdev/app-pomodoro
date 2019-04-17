@@ -74,6 +74,7 @@
 	color: var( --colour-text-negative ) !important;
 	fill: var( --colour-text-negative ) !important;
 }
+
 .colour-positive-bg {
 	background-color: var( --colour-text-positive ) !important;
 }
@@ -156,6 +157,15 @@
 
 
 
+
+.z-inverse .colour-text-light{
+	color: var( --colour-bg );
+	fill: var( --colour-bg );
+}
+.z-inverse .colour-text-dark{
+	color: var( --colour-bg-inv );
+	fill: var( --colour-bg-inv );	
+}
 
 
 
