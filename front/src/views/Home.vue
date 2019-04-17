@@ -47,7 +47,7 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 10*60,
+				timer : 15*60,
 				mode : 'stop',
 			},
 		}

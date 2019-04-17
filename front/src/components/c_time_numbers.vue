@@ -1,44 +1,37 @@
 <template>
 
-	<div ref="parent">
+	<div class="timer">
 
-		<div 
-			ref="timer"
-			class="timer">
+		<div class="row">
 
-			<div class="row">
+			<c-time-number
+				v-if=hasHours
+				v-bind:time_values=getHours>
+				<template v-slot:default>
+					H
+				</template>
+			</c-time-number>
 
-				<!-- <c-time-number
-					v-if=hasHours
-					v-bind:time_value=getHours>
-					<template v-slot:default>
-						H
-					</template>
-				</c-time-number>
+			<c-time-number
+				v-if=hasMins
+				v-bind:time_values=getMins>
+				<template v-slot:default>
+					M
+				</template>
+			</c-time-number>
 
-				<c-time-number
-					v-if=hasMins
-					v-bind:time_value_old=getMinsOld
-					v-bind:time_value=getMins>
-					<template v-slot:default>
-						M
-					</template>
-				</c-time-number> -->
-
-				<c-time-number
-					v-if=hasSeconds
-					v-bind:time_values=getSeconds>
-					<template v-slot:default>
-						S
-					</template>
-				</c-time-number>
-
-			</div>
-
+			<c-time-number
+				v-if=hasSeconds
+				v-bind:time_values=getSeconds>
+				<template v-slot:default>
+					S
+				</template>
+			</c-time-number>
 
 		</div>
 
 	</div>
+
 
 </template>
 
@@ -88,33 +81,48 @@ export default {
 
 		getHours : function(){
 			let timeVar = Math.floor( ( (this.start - this.input ) / 3600) % 60);
+			let pretty = this.pretty_print( timeVar );
 
-			this.$set(this.time.hrs, 0, this.pretty_print( timeVar + 1));
-			this.$set(this.time.hrs, 1, this.pretty_print( timeVar ));
-			this.$set(this.time.hrs, 2, this.pretty_print( timeVar - 1));
-			this.$set(this.time.hrs, 3, this.pretty_print( timeVar - 2));
+			if( this.time.hrs[0] === pretty ){
+				return this.time.hrs;
+			}
+
+			this.$set(this.time.hrs, 0, pretty);
+			this.$set(this.time.hrs, 1, this.pretty_print( timeVar - 1));
+			this.$set(this.time.hrs, 2, this.pretty_print( timeVar + 1));
+			this.$set(this.time.hrs, 3, this.pretty_print( timeVar + 2));
 
 			return this.time.hrs;
 		},
 		
 		getMins : function(){
 			let timeVar = Math.floor( ( (this.start - this.input ) / 60) % 60);
-			
-			this.$set(this.time.mns, 0, this.pretty_print( timeVar + 1));
-			this.$set(this.time.mns, 1, this.pretty_print( timeVar ));
-			this.$set(this.time.mns, 2, this.pretty_print( timeVar - 1));
-			this.$set(this.time.mns, 3, this.pretty_print( timeVar - 2));
+			let pretty = this.pretty_print( timeVar );
+
+			if( this.time.mns[0] === pretty ){
+				return this.time.mns;
+			}
+
+			this.$set(this.time.mns, 0, pretty );
+			this.$set(this.time.mns, 1, this.pretty_print( timeVar - 1));
+			this.$set(this.time.mns, 2, this.pretty_print( timeVar + 1));
+			this.$set(this.time.mns, 3, this.pretty_print( timeVar + 2));
 
 			return this.time.mns;
 		},
 
 		getSeconds : function(){
 			let timeVar = Math.ceil( (this.start - this.input) % 60 );
+			let pretty = this.pretty_print( timeVar );
 
-			this.$set(this.time.secs, 0, this.pretty_print( timeVar + 1));
-			this.$set(this.time.secs, 1, this.pretty_print( timeVar ));
-			this.$set(this.time.secs, 2, this.pretty_print( timeVar - 1));
-			this.$set(this.time.secs, 3, this.pretty_print( timeVar - 2));
+			if( this.time.secs[0] === pretty ){
+				return this.time.secs;
+			}
+
+			this.$set(this.time.secs, 0, pretty );
+			this.$set(this.time.secs, 1, this.pretty_print( timeVar - 1));
+			this.$set(this.time.secs, 2, this.pretty_print( timeVar + 1));
+			this.$set(this.time.secs, 3, this.pretty_print( timeVar + 2));
 
 			return this.time.secs;
 		},
@@ -133,13 +141,13 @@ export default {
 		}
 	},
 
-	mounted(){
-		document.body.appendChild( this.$refs.timer );
-	},
-	beforeDestroy(){
-		document.body.removeChild( this.$refs.timer );	
-		this.$refs.parent.appendChild( this.$refs.timer );
-	},
+	// mounted(){
+	// 	document.body.appendChild( this.$refs.timer );
+	// },
+	// beforeDestroy(){
+	// 	document.body.removeChild( this.$refs.timer );	
+	// 	this.$refs.parent.appendChild( this.$refs.timer );
+	// },
 	components: {
 		'c-time-number' : TimeNumber,
 	},	
@@ -150,12 +158,8 @@ export default {
 <style scoped >
 	
 	.timer {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
+		position: relative;
 		pointer-events: none;
-		overflow: hidden;
 	}
 
 	.timer .row {
