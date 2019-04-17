@@ -1,7 +1,7 @@
 <template>
 
 	<div
-		class="number holder"
+		class="number"
 		v-bind:class="{'anim-tick-down': animated}"
 		v-on:animationend=anim_off>
 
@@ -80,7 +80,6 @@ export default {
 
 	.value {
 		display: inline-block;
-		margin: .75rem;
 	}
 
 	.value.father {
@@ -115,7 +114,7 @@ export default {
 		position: absolute;
 		z-index: 1;
 		bottom: 0;
-		right: 0;
+		right: -.75rem;
 	}
 
 

@@ -125,16 +125,15 @@ export default {
 		z-index: -1;
 		width: 100%;
 		height: 100%;
-		background-color: hsla(100,77%,85%,1);
-		box-sizing: border-box;
+		/*background-color: hsla(100,77%,85%,1);*/
 		opacity: 1;
 	}
 
 	.timer-bg.bar-1 {
-		background-color: hsla(33,77%,77%,1);
+		/*background-color: hsla(33,77%,77%,1);*/
 	}
 	.timer-bg.bar-2 {
-		background-color: hsla(0,77%,60%,1);
+		/*background-color: hsla(0,77%,60%,1);*/
 	}
 
 </style>

@@ -1,30 +1,29 @@
 <template>
 
-	<div>
+	<div class="container">
 
-		<!-- <c-time-bg
+<!-- 		<c-time-bg
 			v-bind:start=app.timer
 			v-bind:input=app.time
 			></c-time-bg> -->
 
 		<c-time-numbers
+			class="item item-numbers"
 			v-bind:start=app.timer
 			v-bind:input=app.time
 			></c-time-numbers>
 
-		<p class="text text-bold text-light"> Pomodora App </p>
+		<p class="item text text-bold text-light"> Pomodora App </p>
 
-		<div class="controls">
+		<c-time-control
+			class="item item-control"
+			v-bind:play=play
+			v-bind:pause=pause
+			v-bind:stop=stop
+			v-bind:resume=resume
+			v-bind:reset=reset>
+		</c-time-control>
 
-			<c-time-control
-				v-bind:play=play
-				v-bind:pause=pause
-				v-bind:stop=stop
-				v-bind:resume=resume
-				v-bind:reset=reset>
-			</c-time-control>
-
-		</div>
 
 	</div>
 	
@@ -47,7 +46,7 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 15*60,
+				timer : 5*60,
 				mode : 'stop',
 			},
 		}
@@ -94,14 +93,23 @@ export default {
 
 <style scoped>
 	
-	.controls {
-		position: absolute;
-		z-index: 5;
-		left: 0;
-		bottom:15%;
-		width: 100%;
-		/*height: 30vh;*/
-		text-align: center;
+	.container {
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.item-control {
+		flex-grow: 0;
+	}
+	.item-numbers {
+		flex-grow: 1;
+	}	
+	.item {
+		width: 15rem;
+		height: -2rem;
+		margin: auto;
 	}
 
 </style>

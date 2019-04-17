@@ -1,8 +1,8 @@
 <template>
 
-	<div class="timer">
-
-		<div class="row">
+	<div>
+		
+		<div class="timer">
 
 			<c-time-number
 				v-if=hasHours
@@ -13,6 +13,7 @@
 			</c-time-number>
 
 			<c-time-number
+				style="margin: 0 1rem;"
 				v-if=hasMins
 				v-bind:time_values=getMins>
 				<template v-slot:default>
@@ -21,6 +22,7 @@
 			</c-time-number>
 
 			<c-time-number
+
 				v-if=hasSeconds
 				v-bind:time_values=getSeconds>
 				<template v-slot:default>
@@ -31,7 +33,6 @@
 		</div>
 
 	</div>
-
 
 </template>
 
@@ -141,13 +142,6 @@ export default {
 		}
 	},
 
-	// mounted(){
-	// 	document.body.appendChild( this.$refs.timer );
-	// },
-	// beforeDestroy(){
-	// 	document.body.removeChild( this.$refs.timer );	
-	// 	this.$refs.parent.appendChild( this.$refs.timer );
-	// },
 	components: {
 		'c-time-number' : TimeNumber,
 	},	
@@ -161,14 +155,6 @@ export default {
 		position: relative;
 		pointer-events: none;
 	}
-
-	.timer .row {
-		position: absolute;
-		top: 50%;
-		width: 100%;
-		text-align: center;
-	}
-
 
 </style>
 
