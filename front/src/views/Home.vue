@@ -2,10 +2,15 @@
 
 	<div>
 
-		<c-time-bg
+		<!-- <c-time-bg
 			v-bind:start=app.timer
 			v-bind:input=app.time
-			></c-time-bg>
+			></c-time-bg> -->
+
+		<c-time-numbers
+			v-bind:start=app.timer
+			v-bind:input=app.time
+			></c-time-numbers>
 
 		<p class="text text-bold text-light"> Pomodora App </p>
 
@@ -29,6 +34,7 @@
 <script>
 // @ is an alias to /src
 import TimeBG from '@/components/c_time_bg.vue';
+import TimeNumbers from '@/components/c_time_numbers.vue';
 import TimeControl from '@/components/c_time_controller.vue';
 
 import { timer } from '../mixins/m_timer.js';
@@ -41,7 +47,7 @@ export default {
 		return {
 			app : {
 				time : 0,
-				timer : 110*60,
+				timer : 10*60,
 				mode : 'stop',
 			},
 		}
@@ -80,6 +86,7 @@ export default {
 	},
 	components: {
 		'c-time-bg' : TimeBG,
+		'c-time-numbers' : TimeNumbers,
 		'c-time-control' : TimeControl,
 	},
 }

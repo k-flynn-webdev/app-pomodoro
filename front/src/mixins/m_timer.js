@@ -20,7 +20,7 @@ function tick( input ){
 let timerInternal = null;
 
 let attrs = { 
-	time_ms : 990,
+	time_ms : 3000,
 	time_change : 1 
 }
 

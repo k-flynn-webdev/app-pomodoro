@@ -24,49 +24,6 @@
 				v-bind:style=getHeightBar2>
 			</div>
 
-
-			<div class="row">
-
-				<div 
-					v-if=hasHours 
-					class="number">
-
-					<p class="value hours header">
-							{{ getHours }}
-					</p>					
-
-					<p class="hrs">H</p>
-
-				</div>
-
-				<div 
-					v-if=hasMins 
-					class="number">
-
-					<p class="value mins header">
-							{{ getMins }}
-					</p>					
-
-					<p class="mns">M</p>
-
-				</div>
-
-				<div 
-					v-if=hasSeconds 
-					class="number">
-
-					<p class="value seconds header">
-							{{ getSeconds }}
-					</p>					
-
-					<p class="secs">S</p>
-
-				</div>
-
-			
-			</div>
-
-
 		</div>
 
 	</div>
@@ -91,39 +48,6 @@ export default {
 		input : Number,
 	},
 	computed : {
-
-		hasHours : function(){
-			if(this.start > 59*60){
-				return true;
-			}
-			return false;
-		},
-		hasMins : function(){
-			if(this.start > 59){
-				return true;
-			}			
-			return false;
-		},
-		hasSeconds : function(){
-			if(this.start > 0){
-				return true;
-			}			
-			return false;
-		},	
-
-		getHours : function(){
-			let timeVar = Math.floor( ( (this.start - this.input ) / 3600) % 60);
-			return this.pretty_print( timeVar );
-		},
-		getMins : function(){
-			let timeVar = Math.floor( ( (this.start - this.input ) / 60) % 60);
-			return this.pretty_print( timeVar );
-		},
-		getSeconds : function(){
-			let timeVar = Math.ceil( (this.start - this.input) % 60 );
-			return this.pretty_print( timeVar );
-		},				
-
 
 		getHeight : function(){
 			let heightVar = (this.input / this.start) * (1 + this.incrementVar);
@@ -171,15 +95,6 @@ export default {
 		},
 	},
 
-	methods : {
-		pretty_print : function( input ){
-			if( Math.abs(input) < 10 ){
-				return ('0' + input); 
-			}
-			return input;
-		}
-	},
-
 	mounted(){
 		document.body.appendChild( this.$refs.timer );
 	},
@@ -187,6 +102,7 @@ export default {
 		document.body.removeChild( this.$refs.timer );	
 		this.$refs.parent.appendChild( this.$refs.timer );
 	},
+	
 }
 
 </script>
@@ -220,53 +136,6 @@ export default {
 	.timer-bg.bar-2 {
 		background-color: hsla(0,77%,60%,1);
 	}
-
-
-	.timer .row {
-		position: absolute;
-		top: 50%;
-		width: 100%;
-		text-align: center;
-	}
-
-	.hours,.mins,.seconds {
-		display: inline-block;
-		margin: .75rem;
-	}
-
-	.number {
-		display: inline-block;
-		position: relative;
-	}
-
-	.hrs,.mns,.secs{
-		display: inline-block;
-		position: absolute;
-		z-index: 1;
-		bottom: 5%;
-		right: 5%;
-	}
-
-	.hide {
-		/*opacity: 0;*/
-	}
-
-	.value {
-		animation: anim-value-tick .3s;
-	}
-
-	@keyframes anim-value-tick {
-		0% {
-			transform: scale(.8);
-		}
-		70% {
-			transform: scale(1.05);
-		}			
-		100% {
-			transform: scale(1);
-		}
-	}
-
 
 </style>
 
