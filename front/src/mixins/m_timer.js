@@ -20,8 +20,8 @@ function tick( input ){
 let timerInternal = null;
 
 let attrs = { 
-	time_ms : 999,
-	time_change : 1 
+	time_ms : 995,
+	time_change : 1
 }
 
 export const timer = {

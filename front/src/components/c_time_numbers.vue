@@ -89,9 +89,9 @@ export default {
 			}
 
 			this.$set(this.time.hrs, 0, pretty);
-			this.$set(this.time.hrs, 1, this.pretty_print( timeVar - 1));
-			this.$set(this.time.hrs, 2, this.pretty_print( timeVar + 1));
-			this.$set(this.time.hrs, 3, this.pretty_print( timeVar + 2));
+			this.$set(this.time.hrs, 1, this.pretty_print( this.check_min(timeVar - 1)));
+			this.$set(this.time.hrs, 2, this.pretty_print( this.check_min(timeVar + 1)));
+			this.$set(this.time.hrs, 3, this.pretty_print( this.check_min(timeVar + 2)));
 
 			return this.time.hrs;
 		},
@@ -105,9 +105,9 @@ export default {
 			}
 
 			this.$set(this.time.mns, 0, pretty );
-			this.$set(this.time.mns, 1, this.pretty_print( timeVar - 1));
-			this.$set(this.time.mns, 2, this.pretty_print( timeVar + 1));
-			this.$set(this.time.mns, 3, this.pretty_print( timeVar + 2));
+			this.$set(this.time.mns, 1, this.pretty_print( this.check_min(timeVar - 1)));
+			this.$set(this.time.mns, 2, this.pretty_print( this.check_min(timeVar + 1)));
+			this.$set(this.time.mns, 3, this.pretty_print( this.check_min(timeVar + 2)));
 
 			return this.time.mns;
 		},
@@ -121,9 +121,9 @@ export default {
 			}
 
 			this.$set(this.time.secs, 0, pretty );
-			this.$set(this.time.secs, 1, this.pretty_print( timeVar - 1));
-			this.$set(this.time.secs, 2, this.pretty_print( timeVar + 1));
-			this.$set(this.time.secs, 3, this.pretty_print( timeVar + 2));
+			this.$set(this.time.secs, 1, this.pretty_print( this.check_min(timeVar - 1)));
+			this.$set(this.time.secs, 2, this.pretty_print( this.check_min(timeVar + 1)));
+			this.$set(this.time.secs, 3, this.pretty_print( this.check_min(timeVar + 2)));
 
 			return this.time.secs;
 		},
@@ -131,15 +131,22 @@ export default {
 	},
 
 	methods : {
+
+		check_min : function( input ){
+			if( input < 0 ){
+				input = Math.abs( input + 60 );
+			} 
+			input = input % 60;
+			return input;
+		},	
 		pretty_print : function( input ){
-			if( input < 0){
-				input += 60
-			}
+			input = this.check_min( input );
 			if( Math.abs(input) < 10 ){
 				return ('0' + input); 
 			}
 			return input.toString();
-		}
+		},
+		
 	},
 
 	components: {
