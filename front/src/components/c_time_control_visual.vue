@@ -1,11 +1,6 @@
 <template>
 
 	<div class="controllers">
-		
-		<p class="text">
-			{{ mode }}
-		</p>
-		
 
 		<button
 			v-if=display.play
@@ -124,13 +119,9 @@
 <script>
 
 export default {
-	name: 'cTimeController',
+	name: 'cTimeControlVisual',
 	data(){
 		return {
-
-			mode : '',
-			mode_past : '',
-
 			display : {
 				play : false,
 				pause : false,
@@ -138,33 +129,15 @@ export default {
 				reset : false,
 				resume : false,
 			}
-
-
-
 		}
-	},
-
-	props : {
-		play : Function,
-		pause : Function,
-		stop : Function,
-		resume : Function,
-		reset : Function,
 	},
 
 	computed : {
 	},
 
-
 	methods : {
 
-		mode_change : function( input ){
-			
-			if( this.mode !== input ){
-				this.mode_past = this.mode;	
-				this.mode = input;
-				console.log( 'mode: ' + this.mode );
-			}
+		mode_display : function( input ){
 
 			switch( input ){
 
@@ -204,38 +177,29 @@ export default {
 					this.display.resume = false;					
 					break;
 
-				default : 
-
+				default :
 			}
-
-			this.mode = input ;
 		},
 
 		play_control : function(){
-			this.play();
-			this.mode_change( 'play' );
+			this.$root.$emit('mode_set', 'play');
 		},
 		pause_control : function(){
-			this.pause();
-			this.mode_change( 'pause' );
+			this.$root.$emit('mode_set', 'pause');
 		},
 		stop_control : function(){
-			this.stop();
-			this.mode_change( 'stop' );
+			this.$root.$emit('mode_set', 'stop');
 		},
 		resume_control : function(){
-			this.resume();
-			this.mode_change( 'resume' );
+			this.$root.$emit('mode_set', 'resume');
 		},
 		reset_control : function(){
-			this.reset();
-			this.mode_change( 'reset' );
+			this.$root.$emit('mode_set', 'reset');
 		},
-								
 	},
 
 	mounted(){
-		this.mode_change('stop');
+		this.$root.$on('mode_display', this.mode_display);
 	},	
 
 }
