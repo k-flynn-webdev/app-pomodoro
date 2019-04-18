@@ -1,9 +1,12 @@
 <template>
 
-	<div class="center-force item-buttons">
+	<div 
+		class="center-force item-buttons"
+		v-bind:class="{'is-active': getDisplay}">
 		
 		<button 
 			class="button"
+			v-bind:class="{'is-selected': isLong}"
 			v-on:click=long>
 			<p class="text">
 				Long
@@ -14,6 +17,7 @@
 
 		<button 
 			class="button"
+			v-bind:class="{'is-selected': isShort}"
 			v-on:click=short>
 			<p class="text">
 				Short
@@ -66,17 +70,45 @@ export default {
 	name: 'cTimeOptions',
 	data(){
 		return {
+			display : false,
+			mode : '',
 		}
 	},
 	props : {
 		setTimer : Function,
-		getTimer : Function,
 		attrs : Object,
 	},
+	computed : {
+		getDisplay : function(){
+			return this.display;
+		},
+		isShort : function(){
+			if( this.mode === 'short'){
+				return true;
+			}
+			return false;
+		},
+		isLong : function(){
+			if( this.mode === 'long'){
+				return true;
+			}
+			return false;
+		},				
+	},
 	methods : {
+		mode_display : function( input ){
+			if( input === 'play' || input === 'pause' || input === 'resume' ){
+				this.display = false;
+			} else {
+				this.display = true;
+			}
+			console.log( 'options:' );
+			console.log( input );
+		},
 		short : function(){
 			let beforeTime = move_towards( this.attrs.short, this.attrs.long, 4 );
 			this.setTimer( beforeTime );
+			this.mode = 'short';
 
 			let input = {
 					attrs : {
@@ -85,13 +117,14 @@ export default {
 					},
 				toUpdate : this.setTimer,
 				goal : this.attrs.short,
-				current : this.getTimer(),
+				current : beforeTime,
 			};
 			ticker( input );
 		},
 		long : function(){
 			let beforeTime = move_towards( this.attrs.long, this.attrs.short, -4 );
 			this.setTimer( beforeTime );
+			this.mode = 'long';
 
 			let input = {
 					attrs : {
@@ -100,13 +133,14 @@ export default {
 					},
 				toUpdate : this.setTimer,
 				goal : this.attrs.long,
-				current : this.getTimer(),
+				current : beforeTime,
 			};
 			ticker( input );
 		},	
 	},
 	mounted(){
 		this.long();
+		this.$root.$on('mode_display', this.mode_display);
 	},
 }
 </script>
@@ -120,9 +154,28 @@ export default {
 		border-radius: 1rem;
 	}
 
+	.is-selected.button {
+		background-color: var( --colour-accent );
+	}
+
 	.item-buttons {
 		margin: 0;
 		padding: 0;
+		z-index: 1;
+		pointer-events: none;
+		transition: 1s;
+		opacity: 0.1;
 	}
+
+	.is-active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.is-selected {
+
+	}
+
+
 
 </style>

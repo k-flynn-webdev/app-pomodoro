@@ -10,6 +10,14 @@
 			v-bind:reset=reset>
 		</c-time-control>		
 
+
+		<c-time-options
+			v-bind:setTimer=setTimer
+			v-bind:attrs=attrs.timers
+			class="colour-text-light">
+		</c-time-options>
+
+
 		<div class="board z-inverse">
 
 			<div class="container">
@@ -19,15 +27,7 @@
 					v-bind:start=app.timer
 					v-bind:input=app.time>		
 				</c-time-numbers>
-					
 
-				<c-time-options
-					v-bind:setTimer=setTimer
-					v-bind:getTimer=getTimer
-					v-bind:attrs=attrs.timers
-					class="colour-text-light">		
-				</c-time-options>
-				
 
 				<c-time-control-visual
 					class="item item-control">
@@ -82,20 +82,18 @@ export default {
 	mixins: [ timer ],
 	data(){
 		return {
+
 			app : {
 				time : 0,
 				timer : 0,
-				mode : '',
-				mode_past : '',
 			},
-			attrs : {
 
+			attrs : {
 				timers :{
 					short : 5*60,
 					long : 20*60,
 					tickChange : 0.988,
 				},
-
 				reveal : {
 					lastUpdate : 0,
 					incrementVar : .01,						
@@ -125,6 +123,7 @@ export default {
 
 		setTimer : function( input ){
 			this.app.timer = input;
+			this.app.time = 0;
 		},
 		getTimer : function(){
 			return this.app.timer;
