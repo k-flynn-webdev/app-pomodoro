@@ -76,7 +76,7 @@ export default {
 	mounted(){
 		this.$root.$on('mode_set', this.mode_set);
 		let self = this;
-		setTimeout( self.init, 1000);
+		setTimeout( self.init, 100);
 	},	
 
 }
