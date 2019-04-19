@@ -109,11 +109,15 @@ export default {
 			} else {
 				this.display = true;
 			}
-			console.log( 'options:' );
-			console.log( input );
 		},
 		short : function(){
+			
+			if( this.mode === 'short' ){
+				return;
+			}
+
 			clearTimer();
+
 			let beforeTime = move_towards( this.attrs.short, this.attrs.long, this.attrs.tickChange );
 			this.setTimer( beforeTime );
 			this.mode = 'short';
@@ -130,7 +134,13 @@ export default {
 			ticker( input );
 		},
 		long : function(){
+
+			if( this.mode === 'long' ){
+				return;
+			}
+
 			clearTimer();
+			
 			let beforeTime = move_towards( this.attrs.long, this.attrs.short, -this.attrs.tickChange );
 			this.setTimer( beforeTime );
 			this.mode = 'long';

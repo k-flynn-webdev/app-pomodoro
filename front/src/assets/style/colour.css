@@ -103,6 +103,9 @@
 	background-color: var( --colour-accent );
 }
 
+.colour-win {
+	background-color: hsla(130,33%,45%,1) !important;
+}
 
 .colour-bg{
 	background-color: var( --colour-bg );
@@ -119,9 +122,9 @@
 	fill: var( --colour-bg-inv );
 }
 
-.colour-accent{
+/*.colour-accent{
 	background-color: yellow;
-}
+}*/
 .colour-icon{
 	color: white;
 	fill: white;

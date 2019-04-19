@@ -42,7 +42,9 @@
 			class="board z-above"
 			v-bind:style=getRevealHeight>
 
-			<div class="container">
+			<div 
+				class="container"
+				v-bind:class="{ 'colour-win' : app.finished }">
 
 				<c-time-numbers
 					class="item item-numbers"
@@ -82,23 +84,28 @@ export default {
 			app : {
 				time : 0,
 				timer : 0,
+				finished : false,
 			},
 
 			attrs : {
 				timers :{
-					short : .5*60,
+					short : .1*60,
 					long : 20*60,
-					tickChange : 3,
+					tickChange : 2,
 				},
 				reveal : {
 					lastUpdate : 0,
 					incrementVar : .01,						
+				},
+				finish : {
+					time_to_hold : 1500,
 				},
 			},
 		}
 	},
 
 	computed : {
+
 		getRevealHeight : function(){
 			let heightVar = (this.app.time / this.app.timer) * (1 + this.attrs.reveal.incrementVar);
 			let diff = Math.abs( heightVar - this.attrs.reveal.lastUpdate );
@@ -111,15 +118,16 @@ export default {
 				this.attrs.reveal.lastUpdate = 1;
 			}
 
-			return { 'height' : (this.attrs.reveal.lastUpdate * 100) + 'vh' };
+			return { 'height' : (this.attrs.reveal.lastUpdate * 100) + '%' };
 		},
 	},
 
 	methods : {
 
 		setTimer : function( input ){
-			this.app.timer = input;
 			this.app.time = 0;
+			this.app.timer = input;
+			this.app.finished = false;
 		},
 		getTimer : function(){
 			return this.app.timer;
@@ -127,9 +135,10 @@ export default {
 
 		setTime : function( input ){
 			this.app.time = input;
+
 			// check if finished
 			if( this.app.time === this.app.timer ){
-				this.$root.$emit('mode_set', 'finished');
+				this.finished();
 			}
 		},
 		getTime : function(){
@@ -137,9 +146,9 @@ export default {
 		},
 
 
-
 		play : function(){
 			this.setTime(0);
+			this.app.finished = false;
 			this.timer_setup( 0, this.getTimer(), this.setTime );
 			this.timer_start();
 		},
@@ -155,8 +164,15 @@ export default {
 		reset : function(){
 			this.timer_clear();
 			this.setTime(0);
+			this.app.finished = false;
 		},
-
+		finished : function(){
+			let self = this;
+			setTimeout( function(){
+				self.app.finished = true;
+				self.$root.$emit('mode_set', 'finished', self.attrs.finish );				
+			}, 900);
+		}
 	
 
 	},
@@ -173,19 +189,14 @@ export default {
 </script>
 
 <style scoped>
-	
-/*	.button {
-		background-color: var( --colour-bg );
-		min-width: unset;
-		padding: .1rem .5rem;
-		border-radius: 1rem;
-	}*/
+
+
 
 	.board {
 		position: absolute;
-		height: 100vh;
+		height: 100%;
 		width: 100vw;
-		transition: .5s;
+		transition: height .3s;
 		overflow: hidden;
 	}
 
@@ -196,6 +207,7 @@ export default {
 		flex-direction: row;
 		flex-wrap: wrap;
 		position: absolute;
+		transition: background-color .4s;
 		background-color: var( --colour-bg );
 	}
 
@@ -210,10 +222,7 @@ export default {
 	.item-control {
 		flex-grow: 1;
 	}
-/*	.item-buttons {
-		margin: 0;
-		padding: 0;
-	}	*/
+
 
 	.item {
 		width: 15rem;

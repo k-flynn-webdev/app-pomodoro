@@ -1,6 +1,6 @@
 <template>
 
-	<div class="" style="position:absolute;top:1rem;width:100%;height:1rem;z-index:10;">
+<!-- 	<div class="" style="position:absolute;top:1rem;width:100%;height:1rem;z-index:10;">
 		
 		<p class="text" style="color:blue;display:block;">
 			past : {{ mode_past }}
@@ -9,7 +9,7 @@
 			now : {{ mode }}
 		</p>
 
-	</div>
+	</div> -->
 
 </template>
 
@@ -39,7 +39,7 @@ export default {
 			this.mode_set('stop');
 		},
 
-		mode_set : function( input ){
+		mode_set : function( input , attrs){
 			
 			if( this.mode !== input ){
 				this.mode_past = this.mode;	
@@ -65,18 +65,24 @@ export default {
 					this.stop();
 					break;
 				case 'reset':
-					this.$root.$emit('mode_display', 'reset', this.mode_past );	
-					this.reset();				
+					this.$root.$emit('mode_display', 'reset', this.mode_past );
+					this.reset();
 					break;
 				case 'finished':
-					this.$root.$emit('mode_display', 'finished', this.mode_past );	
+					this.$root.$emit('mode_display', 'finished', this.mode_past );
+
 					// todo alert user timer is up then reset 
-					this.reset();				
+					let self= this;
+					setTimeout( function(){
+						self.reset();
+					}, attrs.time_to_hold );
+
 					break;
 
 				default : 
+				
 			}
-		},								
+		},
 	},
 
 	mounted(){
