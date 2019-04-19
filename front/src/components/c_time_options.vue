@@ -104,11 +104,12 @@ export default {
 	},
 	methods : {
 		mode_display : function( input ){
-			if( input === 'play' || input === 'pause' || input === 'resume' ){
-				this.display = false;
-			} else {
+			 if( input === 'options-on' ){
 				this.display = true;
-			}
+			 } 
+			 if( input === 'options-off' ){
+				this.display = false;
+			 } 
 		},
 		short : function(){
 			

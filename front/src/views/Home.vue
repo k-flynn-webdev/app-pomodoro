@@ -137,6 +137,12 @@ export default {
 			this.app.time = input;
 
 			// check if finished
+
+			if( this.app.time >= this.app.timer - 1 ){
+				// hide stop button?
+				this.$root.$emit('mode_display', 'near');
+			}
+
 			if( this.app.time === this.app.timer ){
 				this.finished();
 			}
@@ -147,8 +153,7 @@ export default {
 
 
 		play : function(){
-			this.setTime(0);
-			this.app.finished = false;
+			this.reset();
 			this.timer_setup( 0, this.getTimer(), this.setTime );
 			this.timer_start();
 		},
@@ -159,18 +164,20 @@ export default {
 			this.timer_start();
 		},
 		stop : function(){
-			this.timer_stop();
+			this.reset();
 		},
 		reset : function(){
+			console.log('reset 1');
 			this.timer_clear();
 			this.setTime(0);
 			this.app.finished = false;
+			console.log('reset 2');
 		},
 		finished : function(){
 			let self = this;
 			setTimeout( function(){
 				self.app.finished = true;
-				self.$root.$emit('mode_set', 'finished', self.attrs.finish );				
+				self.$root.$emit('mode_set', 'finished', self.attrs.finish );
 			}, 900);
 		}
 	

@@ -1,6 +1,7 @@
 <template>
 
-	<div class="controllers">
+	<div class="controllers"
+		v-bind:class="{ 'is-near' : display.near }">
 
 		<button
 			v-if=display.play
@@ -87,28 +88,7 @@
 
 		</button>
 
-		<!-- <button
-			v-if=display.reset
-			class="button colour-text-light ic"	
-			v-on:click=reset_control>
-			
-			<svg
-				class=""
-				height="100%" 
-				viewBox="0 0 224 224" 
-				version="1.1" 
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
-
-				<path d="M112.55,0.499c61.57,0 111.557,49.987 111.557,111.558c0,61.57 -49.987,111.557 -111.557,111.557c-61.571,0 -111.558,-49.987 -111.558,-111.557c0,-61.571 49.987,-111.558 111.558,-111.558Zm46.312,95.57c8.056,7.895 10.334,12.417 10.334,24.578c0,23.835 -10.248,34.145 -34.02,34.414l0.069,32.496l-57.297,-37.17l57.297,-37.169l-0.069,33.258c17.785,-0.269 25.435,-7.981 25.435,-25.829c0,-9.998 -2.086,-13.748 -9.174,-19.738l7.425,-4.84Zm-92.624,32.976c-8.057,-7.896 -10.334,-12.418 -10.334,-24.578c0,-23.835 10.247,-34.145 34.019,-34.415l-0.069,-32.495l57.298,37.169l-57.298,37.169l0.069,-33.257c-17.785,0.269 -25.435,7.981 -25.435,25.829c0,9.997 2.086,13.748 9.174,19.737l-7.424,4.841Z"/>
-
-			</svg>
-
-		</button>	 -->	
-
-
+		
 
 
 
@@ -126,8 +106,8 @@ export default {
 				play : false,
 				pause : false,
 				stop : false,
-				reset : false,
 				resume : false,
+				near : false,
 			}
 		}
 	},
@@ -145,37 +125,39 @@ export default {
 					this.display.play = false;
 					this.display.pause = true;
 					this.display.stop = true;
-					this.display.reset = false;
 					this.display.resume = false;
+					this.display.near = false;
 					break;
 				case 'pause':
 					this.display.play = false;
 					this.display.pause = false;
 					this.display.stop = true;
-					this.display.reset = false;
 					this.display.resume = true;
+					this.display.near = false;
 					break;
 				case 'resume':
 					this.display.play = false;
 					this.display.pause = true;
 					this.display.stop = true;
-					this.display.reset = false;
 					this.display.resume = false;
+					this.display.near = false;
 					break;
 				case 'stop':
 					this.display.play = true;
 					this.display.pause = false;
 					this.display.stop = false;
-					this.display.reset = true;
 					this.display.resume = false;
+					this.display.near = false;
 					break;
-				case 'reset':
+				case 'near':
+					this.display.near = true;
+					break;
 				case 'finished':
 					this.display.play = true;
 					this.display.pause = false;
 					this.display.stop = false;
-					this.display.reset = true;
-					this.display.resume = false;					
+					this.display.resume = false;
+					this.display.near = true;
 					break;
 
 				default :
@@ -193,9 +175,6 @@ export default {
 		},
 		resume_control : function(){
 			this.$root.$emit('mode_set', 'resume');
-		},
-		reset_control : function(){
-			this.$root.$emit('mode_set', 'reset');
 		},
 	},
 
@@ -216,7 +195,6 @@ export default {
 
 	.controllers {
 		width: 100%;
-		/*background-color: hsla(1,10%,50%,.1);*/
 	}
 
 	.ic {
@@ -225,7 +203,13 @@ export default {
 		clip-rule:evenodd;
 		stroke-linejoin:round;
 		stroke-miterlimit:1.4;
-		/*position: absolute;*/
+		opacity: 1;
+		transition: .5s;
+	}
+
+	.is-near .ic{
+		opacity: 0;
+		pointer-events: none;
 	}
 
 	.play {
