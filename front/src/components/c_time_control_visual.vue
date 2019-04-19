@@ -87,7 +87,7 @@
 
 		</button>
 
-		<button
+		<!-- <button
 			v-if=display.reset
 			class="button colour-text-light ic"	
 			v-on:click=reset_control>
@@ -106,7 +106,7 @@
 
 			</svg>
 
-		</button>		
+		</button>	 -->	
 
 
 
@@ -170,6 +170,7 @@ export default {
 					this.display.resume = false;
 					break;
 				case 'reset':
+				case 'finished':
 					this.display.play = true;
 					this.display.pause = false;
 					this.display.stop = false;

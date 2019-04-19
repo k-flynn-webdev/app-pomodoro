@@ -38,10 +38,6 @@
 		</div>
 
 
-
-
-
-<!-- 
 		<div 
 			class="board z-above"
 			v-bind:style=getRevealHeight>
@@ -61,7 +57,7 @@
 
 			</div>
 
-		</div> -->
+		</div>
 
 	</div>	
 
@@ -90,9 +86,9 @@ export default {
 
 			attrs : {
 				timers :{
-					short : 5*60,
+					short : .5*60,
 					long : 20*60,
-					tickChange : 0.988,
+					tickChange : 3,
 				},
 				reveal : {
 					lastUpdate : 0,
@@ -131,6 +127,10 @@ export default {
 
 		setTime : function( input ){
 			this.app.time = input;
+			// check if finished
+			if( this.app.time === this.app.timer ){
+				this.$root.$emit('mode_set', 'finished');
+			}
 		},
 		getTime : function(){
 			return this.app.time;
@@ -174,12 +174,12 @@ export default {
 
 <style scoped>
 	
-	.button {
+/*	.button {
 		background-color: var( --colour-bg );
 		min-width: unset;
 		padding: .1rem .5rem;
 		border-radius: 1rem;
-	}
+	}*/
 
 	.board {
 		position: absolute;
@@ -210,10 +210,10 @@ export default {
 	.item-control {
 		flex-grow: 1;
 	}
-	.item-buttons {
+/*	.item-buttons {
 		margin: 0;
 		padding: 0;
-	}	
+	}	*/
 
 	.item {
 		width: 15rem;

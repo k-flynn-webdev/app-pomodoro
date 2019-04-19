@@ -31,6 +31,11 @@
 
 <script>
 
+let timerInternal = null;
+
+function clearTimer(){
+	clearTimeout( timerInternal );
+}	
 
 function ticker( input ){
 	input.current = move_towards( input.current, input.goal, input.attrs.change );
@@ -39,7 +44,9 @@ function ticker( input ){
 	let diff = Math.abs(input.goal - input.current);
 
 	if( diff !== 0 ){
-		setTimeout( ticker, input.attrs.timeMS, input);
+		timerInternal = setTimeout( ticker, input.attrs.timeMS, input);
+	} else {
+		clearTimer();
 	}
 }
 
@@ -106,13 +113,14 @@ export default {
 			console.log( input );
 		},
 		short : function(){
-			let beforeTime = move_towards( this.attrs.short, this.attrs.long, 4 );
+			clearTimer();
+			let beforeTime = move_towards( this.attrs.short, this.attrs.long, this.attrs.tickChange );
 			this.setTimer( beforeTime );
 			this.mode = 'short';
 
 			let input = {
 					attrs : {
-						timeMS : 850,
+						timeMS : 900,
 						change : 1,
 					},
 				toUpdate : this.setTimer,
@@ -122,13 +130,14 @@ export default {
 			ticker( input );
 		},
 		long : function(){
-			let beforeTime = move_towards( this.attrs.long, this.attrs.short, -4 );
+			clearTimer();
+			let beforeTime = move_towards( this.attrs.long, this.attrs.short, -this.attrs.tickChange );
 			this.setTimer( beforeTime );
 			this.mode = 'long';
 
 			let input = {
 					attrs : {
-						timeMS : 850,
+						timeMS : 900,
 						change : 1,
 					},
 				toUpdate : this.setTimer,
