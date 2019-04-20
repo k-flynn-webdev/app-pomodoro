@@ -167,11 +167,9 @@ export default {
 			this.reset();
 		},
 		reset : function(){
-			console.log('reset 1');
 			this.timer_clear();
 			this.setTime(0);
 			this.app.finished = false;
-			console.log('reset 2');
 		},
 		finished : function(){
 			let self = this;

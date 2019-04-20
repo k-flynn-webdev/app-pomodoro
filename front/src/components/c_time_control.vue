@@ -49,7 +49,6 @@ export default {
 			switch( input ){
 
 				case 'play':
-					console.log('play');
 					this.$root.$emit('mode_display', 'play', this.mode_past );
 					this.play();
 					this.options_off();
@@ -65,19 +64,16 @@ export default {
 					this.options_off();					
 					break;
 				case 'stop':
-					console.log('stop');
 					this.$root.$emit('mode_display', 'stop', this.mode_past );
 					this.stop();
 					this.options_on();
 					break;
 				case 'reset':
-					console.log('reset');
 					this.$root.$emit('mode_display', 'reset', this.mode_past );
 					this.reset();
 					this.options_on();	
 					break;
 				case 'finished':
-					console.log('finished');
 					this.$root.$emit('mode_display', 'finished', this.mode_past );
 
 					// todo alert user timer is up then reset 
