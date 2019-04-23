@@ -6,10 +6,10 @@
 		
 		<button 
 			class="button"
-			v-bind:class="{'is-selected': isLong}"
-			v-on:click=long>
+			v-bind:class="{'is-selected': iswork}"
+			v-on:click=button_work>
 			<p class="text">
-				Long
+				work
 			</p>
 		</button>
 
@@ -17,10 +17,10 @@
 
 		<button 
 			class="button"
-			v-bind:class="{'is-selected': isShort}"
-			v-on:click=short>
+			v-bind:class="{'is-selected': isbreak}"
+			v-on:click=button_break>
 			<p class="text">
-				Short
+				break
 			</p>
 		</button>
 
@@ -89,14 +89,14 @@ export default {
 		getDisplay : function(){
 			return this.display;
 		},
-		isShort : function(){
-			if( this.mode === 'short'){
+		isbreak : function(){
+			if( this.mode === 'break'){
 				return true;
 			}
 			return false;
 		},
-		isLong : function(){
-			if( this.mode === 'long'){
+		iswork : function(){
+			if( this.mode === 'work'){
 				return true;
 			}
 			return false;
@@ -111,17 +111,17 @@ export default {
 				this.display = false;
 			 } 
 		},
-		short : function(){
+		button_break : function(){
 			
-			if( this.mode === 'short' ){
+			if( this.mode === 'break' ){
 				return;
 			}
 
 			clearTimer();
 
-			let beforeTime = move_towards( this.attrs.short, this.attrs.long, this.attrs.tickChange );
+			let beforeTime = move_towards( this.attrs.break, this.attrs.work, this.attrs.tickChange );
 			this.setTimer( beforeTime );
-			this.mode = 'short';
+			this.mode = 'break';
 
 			let input = {
 					attrs : {
@@ -129,22 +129,22 @@ export default {
 						change : 1,
 					},
 				toUpdate : this.setTimer,
-				goal : this.attrs.short,
+				goal : this.attrs.break,
 				current : beforeTime,
 			};
 			ticker( input );
 		},
-		long : function(){
+		button_work : function(){
 
-			if( this.mode === 'long' ){
+			if( this.mode === 'work' ){
 				return;
 			}
 
 			clearTimer();
 			
-			let beforeTime = move_towards( this.attrs.long, this.attrs.short, -this.attrs.tickChange );
+			let beforeTime = move_towards( this.attrs.work, this.attrs.break, -this.attrs.tickChange );
 			this.setTimer( beforeTime );
-			this.mode = 'long';
+			this.mode = 'work';
 
 			let input = {
 					attrs : {
@@ -152,14 +152,14 @@ export default {
 						change : 1,
 					},
 				toUpdate : this.setTimer,
-				goal : this.attrs.long,
+				goal : this.attrs.work,
 				current : beforeTime,
 			};
 			ticker( input );
 		},	
 	},
 	mounted(){
-		this.long();
+		this.button_work();
 		this.$root.$on('mode_display', this.mode_display);
 	},
 }

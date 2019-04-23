@@ -92,8 +92,8 @@ export default {
 
 			attrs : {
 				timers :{
-					short : .1*60,
-					long : 1*60,
+					break : 4*60,
+					work : 18*60,
 					tickChange : 2,
 				},
 				reveal : {
