@@ -75,7 +75,7 @@ export default {
 					break;
 				case 'finished':
 					this.$root.$emit('mode_display', 'finished', this.mode_past );
-
+					this.$root.$emit('sound-play');
 					// todo alert user timer is up then reset 
 					let self = this;
 					setTimeout( function(){

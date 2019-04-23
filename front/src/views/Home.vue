@@ -2,6 +2,8 @@
 
 	<div>
 
+		<c-sound></c-sound>	
+
 		<c-time-control
 			v-bind:play=play
 			v-bind:pause=pause
@@ -21,6 +23,9 @@
 		<div class="board z-inverse">
 
 			<div class="container">
+
+				<c-sound-visual>
+				</c-sound-visual>
 
 				<c-time-numbers
 					class="item item-numbers"
@@ -46,6 +51,9 @@
 				class="container"
 				v-bind:class="{ 'colour-win' : app.finished }">
 
+				<c-sound-visual>
+				</c-sound-visual>
+				
 				<c-time-numbers
 					class="item item-numbers"
 					v-bind:start=app.timer
@@ -69,13 +77,17 @@
 
 <script>
 // @ is an alias to /src
+import Sound from '@/components/c_sound.vue';
+import SoundVisual from '@/components/c_sound_visual.vue';
+
 import AppVersion from '@/components/c_app_version.vue';
 import TimeNumbers from '@/components/c_time_numbers.vue';
 import TimeControl from '@/components/c_time_control.vue';
 import TimeControlVisual from '@/components/c_time_control_visual.vue';
 import TimeOptions from '@/components/c_time_options.vue';
 
-import { timer } from '../mixins/m_timer.js';
+import { timer } from '@/mixins/m_timer.js';
+
 import NoSleep from 'nosleep.js';
 var noSleep = new NoSleep();
 
@@ -197,12 +209,13 @@ export default {
 			}, 900);
 		}
 	
-
 	},
 	mounted(){
 
 	},
 	components: {
+		'c-sound' : Sound,
+		'c-sound-visual' : SoundVisual,
 		'c-app-version' : AppVersion,
 		'c-time-numbers' : TimeNumbers,
 		'c-time-options' : TimeOptions,
