@@ -53,7 +53,7 @@
 
 				<c-sound-visual>
 				</c-sound-visual>
-				
+
 				<c-time-numbers
 					class="item item-numbers"
 					v-bind:start=app.timer
@@ -189,7 +189,7 @@ export default {
 			this.timer_stop();
 		},		
 		resume : function(){
-			this.timer_start();
+			this.timer_resume();
 		},
 		stop : function(){
 			disableNoSleep();
@@ -212,6 +212,9 @@ export default {
 	},
 	mounted(){
 
+	},
+	beforeDestroy(){
+		this.stop();
 	},
 	components: {
 		'c-sound' : Sound,

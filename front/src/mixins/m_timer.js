@@ -79,7 +79,21 @@ export const timer = {
 				// workerInternal = new Worker("@/helper/m_timer_worker.js");
 				// workerInternal.postMessage( this.vars.timer );
 			}
-		},
+		},	
+		timer_resume : function(){
+			if( this.vars.timer.current !== this.vars.timer.goal ){
+
+				// find the diff in ticks before completion
+
+				let diffToAdd = this.vars.timer.goal - this.vars.timer.current;
+				let timeIn_S = Date.now() / 1000;
+				this.vars.timer.timeGoal = timeIn_S + diffToAdd;
+				
+				tick( this.vars.timer );
+				// workerInternal = new Worker("@/helper/m_timer_worker.js");
+				// workerInternal.postMessage( this.vars.timer );
+			}
+		},			
 		timer_stop : function(){
 			clearTimeout( timerInternal );
 			// workerInternal = null;
