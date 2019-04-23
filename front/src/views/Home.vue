@@ -90,7 +90,7 @@ export default {
 			attrs : {
 				timers :{
 					short : .1*60,
-					long : 20*60,
+					long : 1*60,
 					tickChange : 2,
 				},
 				reveal : {
@@ -143,7 +143,7 @@ export default {
 				this.$root.$emit('mode_display', 'near');
 			}
 
-			if( this.app.time === this.app.timer ){
+			if( this.app.time >= this.app.timer ){
 				this.finished();
 			}
 		},
@@ -154,7 +154,7 @@ export default {
 
 		play : function(){
 			this.reset();
-			this.timer_setup( 0, this.getTimer(), this.setTime );
+			this.timer_setup( 0, this.getTimer(), this.setTime, this.finished );
 			this.timer_start();
 		},
 		pause : function(){
@@ -173,6 +173,7 @@ export default {
 		},
 		finished : function(){
 			let self = this;
+			self.app.time = self.app.timer;
 			setTimeout( function(){
 				self.app.finished = true;
 				self.$root.$emit('mode_set', 'finished', self.attrs.finish );
