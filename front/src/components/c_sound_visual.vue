@@ -1,15 +1,15 @@
 <template>
 
 	<div 
-		class="sound anim-3"
-		v-bind:class="{ 'is-active' : getDisplay }">
+		class="sound anim-3">
 
 		<button
 			class="button ic"
+			v-bind:class="{ 'is-active' : getDisplay }"
 			v-on:click=sound_toggle>
 
 			<svg
-				class="icon"
+				class="icon anim-3"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 
@@ -65,12 +65,6 @@ export default {
 		top: 0;
 		right: 0;
 		z-index: 1;
-		opacity: 0.35;
-
-	}
-
-	.sound.is-active{
-		opacity: 1;
 	}
 
 	button {
@@ -92,6 +86,18 @@ export default {
 		color: var( --colour-bg-inv );
 		fill: var( --colour-bg-inv );
 	}
+
+	.icon {
+		opacity: 0.75;
+	}
+	.is-active .icon {
+		opacity: 1;
+		color: var( --colour-accent );
+		fill: var( --colour-accent );
+	}	
+
+
+
 
 
 
