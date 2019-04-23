@@ -212,10 +212,6 @@ export default {
 		pointer-events: none;
 	}
 
-	.play {
-
-	}
-
 
 /*	@keyframes anim-timer-ticker {
 		0% {

@@ -64,7 +64,6 @@ export const timer = {
 		timer_setup : function( current, goal, toUpdate, toDone ){
 			this.vars.timer.current = current;
 			this.vars.timer.goal = goal;
-			this.vars.timer.timeObj = '';
 			this.vars.timer.toUpdate = toUpdate;
 			this.vars.timer.toDone = toDone;
 		},
