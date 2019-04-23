@@ -1,16 +1,5 @@
 <template>
 
-<!-- 	<div class="" style="position:absolute;top:1rem;width:100%;height:1rem;z-index:10;">
-		
-		<p class="text" style="color:blue;display:block;">
-			past : {{ mode_past }}
-		</p>
-		<p class="text" style="color:blue;display:block;">
-			now : {{ mode }}
-		</p>
-
-	</div> -->
-
 </template>
 
 <script>

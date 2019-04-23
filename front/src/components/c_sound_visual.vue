@@ -5,11 +5,11 @@
 
 		<button
 			class="button ic"
-			v-bind:class="{ 'is-active' : getDisplay }"
 			v-on:click=sound_toggle>
 
 			<svg
-				class="icon anim-3"
+				v-bind:class="{ 'is-active colour-fill-accent' : getDisplay }"			
+				class="icon anim-3 colour-fill-bg"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 
@@ -77,7 +77,7 @@ export default {
 		width: 100%;
 	}
 
-	.z-inverse .icon {
+/*	.z-inverse .icon {
 		color: var( --colour-bg );
 		fill: var( --colour-bg );
 	}
@@ -85,15 +85,15 @@ export default {
 	.icon {
 		color: var( --colour-bg-inv );
 		fill: var( --colour-bg-inv );
-	}
+	}*/
 
 	.icon {
 		opacity: 0.75;
 	}
 	.is-active .icon {
 		opacity: 1;
-		color: var( --colour-accent );
-		fill: var( --colour-accent );
+/*		color: var( --colour-accent );
+		fill: var( --colour-accent );*/
 	}	
 
 

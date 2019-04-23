@@ -6,32 +6,32 @@
 		v-on:animationend=anim_off>
 
 
-			<p class="value header father text-bold colour-small">
+			<p class="value header father text-bold colour-minor">
 
 				{{ time_values[1] }}
 
 			</p>
 
-			<p class="value header main text-bold colour-text-light">
+			<p class="value header main text-bold colour-fill-bg">
 
 				{{ time_change }}
 
 			</p>
 
-			<p class="value header son text-bold colour-small">
+			<p class="value header son text-bold colour-minor">
 
 				{{ time_values[2] }}
 
 			</p>
 
-			<p class="value header grandson colour-small">
+			<p class="value header grandson colour-minor">
 
 				{{ time_values[3] }}
 
 			</p>
 
 
-		<p class="time-stamp colour-text-light"> 
+		<p class="time-stamp colour-fill-bg"> 
 			<slot>
 				
 			</slot>
@@ -84,9 +84,7 @@ export default {
 
 /*color: hsla(200,30%,50%,1);*/
 
-	.colour-small {
-		color: hsla(200,5%,50%,1);
-	}	
+
 
 	.value.father {
 		position: absolute;

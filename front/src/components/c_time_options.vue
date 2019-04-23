@@ -5,10 +5,10 @@
 		v-bind:class="{'is-active': getDisplay}">
 		
 		<button 
-			class="button"
-			v-bind:class="{'is-selected': iswork}"
+			class="button colour-bg-inv"
+			v-bind:class="{'colour-accent': iswork, 'border' : !iswork}"
 			v-on:click=button_work>
-			<p class="text">
+			<p class="text colour-fill-bg">
 				work
 			</p>
 		</button>
@@ -16,10 +16,10 @@
 		<div style="width:1rem;height:1rem;"></div>
 
 		<button 
-			class="button"
-			v-bind:class="{'is-selected': isbreak}"
+			class="button colour-bg-inv"
+			v-bind:class="{'colour-accent': isbreak, 'border' : !isbreak}"
 			v-on:click=button_break>
-			<p class="text">
+			<p class="text colour-fill-bg">
 				break
 			</p>
 		</button>
@@ -168,14 +168,9 @@ export default {
 <style scoped>
 	
 	.button {
-		background-color: var( --colour-bg );
 		min-width: unset;
 		padding: .1rem .5rem;
 		border-radius: 1rem;
-	}
-
-	.is-selected.button {
-		background-color: var( --colour-accent );
 	}
 
 	.item-buttons {
@@ -191,11 +186,6 @@ export default {
 		opacity: 1;
 		pointer-events: auto;
 	}
-
-	.is-selected {
-
-	}
-
 
 
 </style>

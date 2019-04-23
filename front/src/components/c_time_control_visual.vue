@@ -5,11 +5,11 @@
 
 		<button
 			v-if=display.play
-			class="button colour-text-light ic"
+			class="button ic"
 			v-on:click=play_control>
 
 			<svg
-				class=""
+				class="colour-fill-bg"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 
@@ -27,11 +27,11 @@
 
 		<button
 			v-if=display.resume
-			class="button colour-text-light ic"
+			class="button ic"
 			v-on:click=resume_control>
 
 			<svg
-				class=""
+				class="colour-fill-bg"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 
@@ -48,11 +48,11 @@
 
 		<button
 			v-if=display.pause
-			class="button colour-text-light ic"
+			class="button ic"
 			v-on:click=pause_control>
 
 			<svg
-				class=""
+				class="colour-fill-bg"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 
@@ -69,11 +69,11 @@
 
 		<button
 			v-if=display.stop
-			class="button colour-text-light ic"
+			class="button ic"
 			v-on:click=stop_control>
 			
 			<svg
-				class=""
+				class="colour-fill-bg"
 				height="100%" 
 				viewBox="0 0 224 224" 
 				version="1.1" 

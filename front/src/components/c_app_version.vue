@@ -1,13 +1,10 @@
 <template>
 
 	<div class="app-version ">
-		<p class="text colour-text-light">
+		<p class="text colour-minor">
 			Ver : {{ version }}	
 		</p>
-		
-
-	</div>	
-
+	</div>
 
 </template>
 
@@ -40,7 +37,6 @@ export default {
 	.app-version .text {
 		margin: .5rem;
 		padding: 0;
-		color: grey;
 	}
 
 </style>

@@ -54,58 +54,22 @@
 }
 
 
-.colour-on-hover:hover {
-	background-color: var( --colour-hover ); 
+
+
+.header.colour-minor, .title.colour-minor, .text.colour-minor{
+	fill: hsla(200,5%,50%,1);
+	color: hsla(200,5%,50%,1);
 }
-.colour-on-focus:focus {
-	outline: none;
-	background-color: var( --colour-focus ); 
-}
-
-/*.input, input {*/
-	/*outline: 2px solid var( --colour-bg-inv );*/
-/*}*/
-
-.colour-positive {
-	color: var( --colour-text-positive ) !important;
-	fill: var( --colour-text-positive ) !important;
-}
-.colour-negative {
-	color: var( --colour-text-negative ) !important;
-	fill: var( --colour-text-negative ) !important;
-}
-
-.colour-positive-bg {
-	background-color: var( --colour-text-positive ) !important;
-}
-.colour-negative-bg {
-	background-color: var( --colour-text-negative ) !important;
-}
-
-/*.colour-yellow {
-	background-color: hsl(40,75%,55%) !important;
-}*/
-
-/*.light {
-	background-color: hsla(177, 8%, 95%, 0.9);
-}	
-.dark {
-	background-color: hsla(177, 8%, 20%, 0.9);
-}*/
-
-.shade {
-	background-color: hsla(177, 8%, 20%, 0.75);
-}
-
-
 
 .colour-accent {
-	background-color: var( --colour-accent );
+	background-color: var( --colour-accent ) !important;
+}
+.colour-fill-accent {
+	color: var( --colour-accent ) !important;
+	fill: var( --colour-accent ) !important;
 }
 
-.colour-win {
-	background-color: hsla(130,33%,45%,1) !important;
-}
+
 
 .colour-bg{
 	background-color: var( --colour-bg );
@@ -122,70 +86,23 @@
 	fill: var( --colour-bg-inv );
 }
 
-/*.colour-accent{
-	background-color: yellow;
-}*/
-.colour-icon{
-	color: white;
-	fill: white;
+
+
+
+.z-inverse .colour-bg{
+	background-color: var( --colour-bg-inv );
 }
-.colour-container{
-	background-color: transparent;
+.z-inverse .colour-bg-inv{
+	background-color: var( --colour-bg );
 }
-
-/*.colour-panel{
-	background-color: var( --colour-panel );
-}*/
-
-/*.colour-panel-header{
-	background-color: hsla(10,10%,10%,1);
-}*/
-
-
-.colour-light{
-	background-color: hsl(100,10%,80%);
-}
-.colour-dark{
-	background-color: hsl(100,10%,20%);
-}
-
-.colour-text-light{
+.z-inverse .colour-fill-bg{
 	color: var( --colour-bg-inv );
 	fill: var( --colour-bg-inv );
 }
-.colour-text-dark{
+.z-inverse .colour-fill-bg-inv{
 	color: var( --colour-bg );
 	fill: var( --colour-bg );
 }
-
-
-
-
-.z-inverse .colour-text-light{
-	color: var( --colour-bg );
-	fill: var( --colour-bg );
-}
-.z-inverse .colour-text-dark{
-	color: var( --colour-bg-inv );
-	fill: var( --colour-bg-inv );	
-}
-
-
-
-
-/*.colour-header .title {
-	color: hsla(10,10%,90%,1);
-}*/
-
-
-/*.colour-title{
-	
-}
-.colour-text{
-	
-}*/
-
-
 
 
 

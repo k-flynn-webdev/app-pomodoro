@@ -126,7 +126,7 @@ li{
 }
 
 button, .button {
-	background-color: var( --colour-button );
+	/*background-color: var( --colour-button );*/
 	height: var( --btn-height-screen-large );
 	border-radius: var( --border-radius-button );
 	border: none;
@@ -138,6 +138,18 @@ button, .button {
 button:hover, .button:hover {
 	transform: scale(1.085);
 }
+
+.border {
+	/*background-color: unset;
+	border: 1px solid white;
+	box-sizing: content-box;*/
+}
+.is-selected .border {
+	/*background-color: unset;
+	border: 1px solid white;
+	box-sizing: content-box;*/
+}
+
 
 .button p, button p{
 	font-weight: 500;

@@ -4,14 +4,15 @@
 
 		<c-sound></c-sound>	
 
+		<c-colour-switch></c-colour-switch>	
+
 		<c-time-control
 			v-bind:play=play
 			v-bind:pause=pause
 			v-bind:stop=stop
 			v-bind:resume=resume
 			v-bind:reset=reset>
-		</c-time-control>		
-
+		</c-time-control>
 
 		<c-time-options
 			v-bind:setTimer=setTimer
@@ -19,10 +20,14 @@
 			class="colour-text-light">
 		</c-time-options>
 
+		<c-app-version></c-app-version>
+
+
+
 
 		<div class="board z-inverse">
 
-			<div class="container">
+			<div class="container colour-bg-inv">
 
 				<c-sound-visual>
 				</c-sound-visual>
@@ -30,7 +35,7 @@
 				<c-time-numbers
 					class="item item-numbers"
 					v-bind:start=app.timer
-					v-bind:input=app.time>		
+					v-bind:input=app.time>
 				</c-time-numbers>
 
 
@@ -44,12 +49,12 @@
 
 
 		<div 
-			class="board z-above"
+			class="board"
 			v-bind:style=getRevealHeight>
 
 			<div 
-				class="container"
-				v-bind:class="{ 'colour-win' : app.finished }">
+				class="container colour-bg-inv"
+				v-bind:class="{ 'colour-accent' : app.finished }">
 
 				<c-sound-visual>
 				</c-sound-visual>
@@ -69,7 +74,7 @@
 
 		</div>
 
-		<c-app-version></c-app-version>
+		
 
 	</div>	
 
@@ -77,6 +82,7 @@
 
 <script>
 // @ is an alias to /src
+import CSwitch from '@/components/c_colour_switch.vue';
 import Sound from '@/components/c_sound.vue';
 import SoundVisual from '@/components/c_sound_visual.vue';
 
@@ -117,8 +123,8 @@ export default {
 
 			attrs : {
 				timers :{
-					break : 4*60,
-					work : 18*60,
+					break : .1*60,
+					work : 1*60,
 					tickChange : 2,
 				},
 				reveal : {
@@ -217,6 +223,7 @@ export default {
 		this.stop();
 	},
 	components: {
+		'c-colour-switch' : CSwitch,
 		'c-sound' : Sound,
 		'c-sound-visual' : SoundVisual,
 		'c-app-version' : AppVersion,
@@ -248,12 +255,10 @@ export default {
 		flex-wrap: wrap;
 		position: absolute;
 		transition: background-color .4s;
-		background-color: var( --colour-bg );
 	}
 
 	.z-inverse .container {
 		z-index: 0;
-		background-color: var( --colour-bg-inv );
 	}
 
 	.item-numbers {
