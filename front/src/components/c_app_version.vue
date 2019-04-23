@@ -2,7 +2,7 @@
 
 	<div class="app-version ">
 		<p class="text colour-text-light">
-			App Version : {{ version }}	
+			Ver : {{ version }}	
 		</p>
 		
 
@@ -33,11 +33,13 @@ export default {
 <style scoped>
 	.app-version {
 		position: absolute;
-		right: .5rem;
+		right: 0;
 		bottom: 0;
 		z-index: 1;
 	}
 	.app-version .text {
+		margin: .5rem;
+		padding: 0;
 		color: grey;
 	}
 
