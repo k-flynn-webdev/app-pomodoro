@@ -76,6 +76,19 @@ import TimeControlVisual from '@/components/c_time_control_visual.vue';
 import TimeOptions from '@/components/c_time_options.vue';
 
 import { timer } from '../mixins/m_timer.js';
+import NoSleep from 'nosleep.js';
+var noSleep = new NoSleep();
+
+function enableNoSleep() {
+	console.log('no sleep started.');
+	noSleep.enable();
+	// document.removeEventListener('touchstart', enableNoSleep, false);
+}
+function disableNoSleep() {
+	// document.removeEventListener('touchstart', enableNoSleep, false);
+	console.log('no sleep stopped.');
+	noSleep.disable();
+}
 
 
 export default {
@@ -140,7 +153,6 @@ export default {
 			this.app.time = input;
 
 			// check if finished
-
 			if( this.app.time >= this.app.timer - 1 ){
 				// hide stop button?
 				this.$root.$emit('mode_display', 'near');
@@ -159,6 +171,7 @@ export default {
 			this.reset();
 			this.timer_setup( 0, this.getTimer(), this.setTime, this.finished );
 			this.timer_start();
+			enableNoSleep();
 		},
 		pause : function(){
 			this.timer_stop();
@@ -167,6 +180,7 @@ export default {
 			this.timer_start();
 		},
 		stop : function(){
+			disableNoSleep();
 			this.reset();
 		},
 		reset : function(){
