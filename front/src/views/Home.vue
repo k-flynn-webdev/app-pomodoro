@@ -61,12 +61,15 @@
 
 		</div>
 
+		<c-app-version></c-app-version>
+
 	</div>	
 
 </template>
 
 <script>
 // @ is an alias to /src
+import AppVersion from '@/components/c_app_version.vue';
 import TimeNumbers from '@/components/c_time_numbers.vue';
 import TimeControl from '@/components/c_time_control.vue';
 import TimeControlVisual from '@/components/c_time_control_visual.vue';
@@ -186,6 +189,7 @@ export default {
 
 	},
 	components: {
+		'c-app-version' : AppVersion,
 		'c-time-numbers' : TimeNumbers,
 		'c-time-options' : TimeOptions,
 		'c-time-control' : TimeControl,
