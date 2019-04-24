@@ -1,24 +1,14 @@
 
 web server static server.
 
--main page
-
-	animated transition fancy waterfall effect
-
-	start button
-	visual progress
-
-	options 
-		start
-		stop
-		reset
-
--web notify to install as app
+todo: 
+	updating pwa in bg seems broken.
+	pwa bg web worker to ensure timer is met and chimed
 
 
--learn service worker?
-	-start a worker
-	-stop a worker
-	-notify result
-
-
+future:
+	create settings file
+	save user prefs for colour theme and sound on/off
+	create user own colour and save?
+	create own timers?
+	add 3 breaks and longer break functionality.
