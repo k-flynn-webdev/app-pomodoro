@@ -12,3 +12,7 @@ future:
 	create user own colour and save?
 	create own timers?
 	add 3 breaks and longer break functionality.
+
+
+bugs: 	
+	possible issue with nosleep forcing chime sound to not play on some phones?
