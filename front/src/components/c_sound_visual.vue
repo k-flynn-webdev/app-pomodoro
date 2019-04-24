@@ -22,6 +22,18 @@
 
 			</svg>
 
+		</button>		
+
+
+
+
+
+		<button
+			class="button ic"
+			v-on:click=sound_toggle>
+
+
+
 		</button>
 
 	</div>
@@ -70,7 +82,6 @@ export default {
 	button {
 		min-width: unset;
 		background-color: unset;
-
 	}
 
 	.controllers {
@@ -89,6 +100,9 @@ export default {
 
 	.icon {
 		opacity: 0.75;
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: 1rem;		
 	}
 	.is-active .icon {
 		opacity: 1;
@@ -97,14 +111,8 @@ export default {
 	}	
 
 
-
-
-
-
 	.ic {
 		padding: 0;
-		margin: .5rem;
-		height: 2.5rem; 
 		fill-rule:evenodd;
 		clip-rule:evenodd;
 		stroke-linejoin:round;

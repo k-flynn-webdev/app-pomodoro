@@ -154,7 +154,7 @@ export default {
 	}
 	@keyframes anim-tick-son-keys {
 		0% {
-			color: var( --colour-bg-inv );
+			color: var( --colour-inv );
 			transform: translateY(0) scale(1);
 		}	
 		90% {
@@ -167,7 +167,7 @@ export default {
 	}
 	@keyframes anim-tick-son-keys-inv {
 		0% {
-			color: var( --colour-bg );
+			color: var( --colour );
 			transform: translateY(0) scale(1);
 		}	
 		90% {

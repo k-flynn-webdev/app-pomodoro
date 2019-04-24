@@ -48,7 +48,7 @@ text,p,h1,.header,.title,.text{
 	fill: var( --colour-text-light );
 	color: var( --colour-text-light );
 }*/
-.text-positive {
+/*.text-positive {
 	stroke: var( --colour-text-positive );
 	fill: var( --colour-text-positive );
 	color: var( --colour-text-positive );
@@ -57,7 +57,7 @@ text,p,h1,.header,.title,.text{
 	stroke: var( --colour-text-negative );
 	fill: var( --colour-text-negative );
 	color: var( --colour-text-negative );
-}
+}*/
 
 /*.text-light a , .text-dark a {
 	color: hsla(200,85%,50%,1);

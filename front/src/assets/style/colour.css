@@ -1,23 +1,24 @@
 
 :root {
 
-	--colour-bg: hsl(250,50%,15%);
-	
-	--colour-bg-inv: hsla(35,30%,90%,1);
-
-
-	--colour-outline: hsla(33,20%,15%,0.5);
+	--colour: hsl(250,50%,15%);
+	--colour-inv: hsla(35,30%,90%,1);
 	--colour-accent: hsla(100,50%,50%,1);
+	
+	--colour-button: hsla(33,20%,15%,1);
 
-	--colour-text-positive: hsla(100, 40%, 50%, 1.0);
+
+	/*--colour-outline: hsla(33,20%,15%,0.5);*/
+
+/*	--colour-text-positive: hsla(100, 40%, 50%, 1.0);
 	--colour-text-negative: hsla(1, 40%, 50%, 1.0);
 
 	--colour-success: hsla(100, 35%, 80%, 1.0);
 	--colour-warning: hsla(50, 55%, 80%, 1.0);
 
-	--colour-button: hsla(33,20%,15%,1);
+	
 
-	--colour-input: hsla(1,1%,97%,0.66);
+	--colour-input: hsla(1,1%,97%,0.66);*/
 
 
 
@@ -71,37 +72,35 @@
 
 
 
-.colour-bg{
-	background-color: var( --colour-bg );
+.colour-bg {
+	background-color: var( --colour );
 }
-.colour-bg-inv{
-	background-color: var( --colour-bg-inv );
+.colour-bg-inv {
+	background-color: var( --colour-inv );
 }
-.colour-fill-bg{
-	color: var( --colour-bg );
-	fill: var( --colour-bg );
+.colour-fill-bg {
+	color: var( --colour );
+	fill: var( --colour );
 }
-.colour-fill-bg-inv{
-	color: var( --colour-bg-inv );
-	fill: var( --colour-bg-inv );
+.colour-fill-bg-inv {
+	color: var( --colour-inv );
+	fill: var( --colour-inv );
 }
-
-
 
 
 .z-inverse .colour-bg{
-	background-color: var( --colour-bg-inv );
+	background-color: var( --colour-inv );
 }
 .z-inverse .colour-bg-inv{
-	background-color: var( --colour-bg );
+	background-color: var( --colour );
 }
 .z-inverse .colour-fill-bg{
-	color: var( --colour-bg-inv );
-	fill: var( --colour-bg-inv );
+	color: var( --colour-inv );
+	fill: var( --colour-inv );
 }
 .z-inverse .colour-fill-bg-inv{
-	color: var( --colour-bg );
-	fill: var( --colour-bg );
+	color: var( --colour );
+	fill: var( --colour );
 }
 
 

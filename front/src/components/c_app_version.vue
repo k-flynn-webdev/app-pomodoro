@@ -1,7 +1,7 @@
 <template>
 
 	<div class="app-version ">
-		<p class="text colour-minor">
+		<p class="text text-small colour-minor">
 			Ver : {{ version }}	
 		</p>
 	</div>
@@ -35,7 +35,7 @@ export default {
 		z-index: 1;
 	}
 	.app-version .text {
-		margin: .5rem;
+		margin: 1rem;
 		padding: 0;
 	}
 

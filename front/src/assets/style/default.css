@@ -228,7 +228,7 @@ textarea {
 }
 
 input:focus, .input:focus , textarea:focus {	
-	outline: 2px solid var( --colour-accent );
+	outline: 2px solid var( --colour-01-accent );
 }
 
 .input-add {

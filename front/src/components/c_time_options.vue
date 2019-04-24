@@ -5,7 +5,7 @@
 		v-bind:class="{'is-active': getDisplay}">
 		
 		<button 
-			class="button colour-bg-inv"
+			class="button colour-bg-inv anim-3"
 			v-bind:class="{'colour-accent': iswork, 'border' : !iswork}"
 			v-on:click=button_work>
 			<p class="text colour-fill-bg">
@@ -16,7 +16,7 @@
 		<div style="width:1rem;height:1rem;"></div>
 
 		<button 
-			class="button colour-bg-inv"
+			class="button colour-bg-inv anim-3"
 			v-bind:class="{'colour-accent': isbreak, 'border' : !isbreak}"
 			v-on:click=button_break>
 			<p class="text colour-fill-bg">
@@ -178,7 +178,6 @@ export default {
 		padding: 0;
 		z-index: 1;
 		pointer-events: none;
-		transition: 1s;
 		opacity: 0.1;
 	}
 

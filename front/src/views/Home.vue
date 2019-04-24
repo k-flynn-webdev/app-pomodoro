@@ -16,13 +16,10 @@
 
 		<c-time-options
 			v-bind:setTimer=setTimer
-			v-bind:attrs=attrs.timers
-			class="colour-text-light">
+			v-bind:attrs=attrs.timers>
 		</c-time-options>
 
 		<c-app-version></c-app-version>
-
-
 
 
 		<div class="board z-inverse">
