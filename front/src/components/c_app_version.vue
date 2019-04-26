@@ -1,8 +1,10 @@
 <template>
 
-	<div class="app-version ">
-		<p class="text text-small colour-minor">
-			Ver : {{ version }}	
+	<div class="app-version">
+		<p 
+			class="text text-small colour-minor"
+			v-on:click=showInstall>
+				Ver : {{ version }}	
 		</p>
 	</div>
 
@@ -17,6 +19,9 @@ export default {
 		}
 	},
 	methods : {
+		showInstall : function(){
+			this.$root.$emit('install');
+		},
 		getVersion : function(){
 			this.version = process.env.VUE_APP_VERSION || '0.0.0';
 		},

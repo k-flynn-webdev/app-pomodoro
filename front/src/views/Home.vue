@@ -2,6 +2,8 @@
 
 	<div>
 
+		<c-pwa-notify></c-pwa-notify>
+
 		<c-sound></c-sound>	
 
 		<c-colour-switch></c-colour-switch>	
@@ -79,6 +81,7 @@
 
 <script>
 // @ is an alias to /src
+import PWANotify from '@/components/c_pwa_notify.vue';
 import CSwitch from '@/components/c_colour_switch.vue';
 import Sound from '@/components/c_sound.vue';
 import SoundVisual from '@/components/c_sound_visual.vue';
@@ -220,6 +223,7 @@ export default {
 		this.stop();
 	},
 	components: {
+		'c-pwa-notify' : PWANotify,
 		'c-colour-switch' : CSwitch,
 		'c-sound' : Sound,
 		'c-sound-visual' : SoundVisual,
