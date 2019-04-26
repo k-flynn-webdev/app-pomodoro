@@ -1,7 +1,7 @@
 <template>
 
 	<div 
-		class="center-force item-buttons"
+		class="center-force item-buttons anim-3"
 		v-bind:class="{'is-active': getDisplay}">
 		
 		<button 
