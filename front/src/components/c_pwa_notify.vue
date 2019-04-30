@@ -71,9 +71,7 @@
 let deferredPrompt = null;
 
 window.addEventListener('beforeinstallprompt', function(event) {
-	// Prevent Chrome 67 and earlier from automatically showing the prompt
 	event.preventDefault();
-	// Stash the event so it can be triggered later.
 	deferredPrompt = event;
 });
 
@@ -86,8 +84,7 @@ export default {
 		return {
 			attrs : {
 				install : {
-					available : false,
-					timeToShow : 20 * 1000,
+					timeToShow : 5 * 1000,
 				}
 			},
 
@@ -96,10 +93,10 @@ export default {
 				message : '',
 				buttons : [],
 			},
-			
-			// isInstalled : false,
-			// result : false,
-			// mode : 'message',
+
+			worker : {
+				object : null,
+			},
 			
 		}
 	},
@@ -118,17 +115,16 @@ export default {
 				return;
 			}
 
-			if( !this.install_available() ){
+			if( deferredPrompt === null ){
 				return;
 			}
 
-			console.log('showing install');
 			this.window.message = 'Add app to homescreen?';
 			
 			this.window.buttons.push({
 				label : 'install',
-				onClick : this.test,
-				onSetup : this.setupInstallToHome,
+				onClick : this.pwa_install,
+				onSetup : null,
 			});
 
 			this.$nextTick( function(){
@@ -136,8 +132,62 @@ export default {
 			});
 
 		},
+		pwa_install : function(){
+			deferredPrompt.prompt();
+			// Wait for the user to respond to the prompt
+			deferredPrompt.userChoice
+				.then((choiceResult) => {
 
-		pwa_option_install : function(){
+					//regardless of choice..
+					this.pwa_hide();
+
+				deferredPrompt = null;
+			});
+		},
+		// setup_Install : function( input ){
+		// 	// Installation must be done by a user gesture! Here, the button click
+		// 	// input.addEventListener('click', (e) => {
+		// 		// Show the prompt
+		// 		deferredPrompt.prompt();
+		// 		// Wait for the user to respond to the prompt
+		// 		deferredPrompt.userChoice
+		// 			.then((choiceResult) => {
+
+		// 				//regardless of choice..
+		// 				this.pwa_hide();
+
+		// 			deferredPrompt = null;
+		// 		});
+		// 	// });
+		// },
+
+		pwa_show_update : function(){
+			if( this.window.display ){
+				return;
+			}
+
+			this.window.message = 'New version found.';
+			
+			this.window.buttons.push({
+				label : 'update',
+				onClick : this.pwa_update,
+				onSetup : null,
+			});
+
+			console.log( this.window.buttons );
+
+			this.$nextTick( function(){
+				this.pwa_show();
+			});
+
+		},
+		pwa_update : function(){
+			let ev_sw_update_accept = new Event("SW_update_accept");
+			document.dispatchEvent(ev_sw_update_accept);
+			console.log('update button clicked.');
+		},
+
+		// pwa_option_install : function(){
 
 			// deferredPrompt.prompt();  // Wait for the user to respond to the prompt
 			// deferredPrompt.userChoice
@@ -153,43 +203,32 @@ export default {
 
 			// });
  
-		},
-		pwa_cancel : function(){
-			this.pwa_hide();
-		},
+		// },
+		// pwa_cancel : function(){
+		// 	this.pwa_hide();
+		// },
 
 
-		pwa_reset : function(){
-			this.window.buttons.splice(0,this.window.buttons.length);
-		},
 
-		test : function(){
-			console.log('test click');
-		},
 
-		install_available : function(){
-			if( deferredPrompt !== null ){
-				this.attrs.install.available = true;
-			}
-			return this.attrs.install.available;
-		},
+		// pwa_update : function(){
+			// console.log('test click');
+			// function send_message_to_sw(msg){
+			// let msg = ' update yay ';
+			// navigator.serviceWorker.controller.postMessage("Client 1 says '"+msg+"'");
+			// }
+		// },
 
-		setupInstallToHome : function( input ){
-			// Installation must be done by a user gesture! Here, the button click
-			input.addEventListener('click', (e) => {
-				// Show the prompt
-				deferredPrompt.prompt();
-				// Wait for the user to respond to the prompt
-				deferredPrompt.userChoice
-					.then((choiceResult) => {
+		// install_available : function(){
+		// 	if( deferredPrompt !== null ){
+		// 		this.attrs.install.available = true;
+		// 	}
+		// 	return this.attrs.install.available;
+		// },
 
-						//regardless of choice..
-						this.pwa_hide();
 
-					deferredPrompt = null;
-				});
-			});
-		},		
+
+
 
 
 
@@ -209,13 +248,42 @@ export default {
 				self.pwa_reset();
 			}, 100);
 		},
+
+
+		pwa_reset : function(){
+			this.window.buttons.splice(0,this.window.buttons.length);
+		},
+
+		pwa_init_events : function(){
+			document.addEventListener('SW_register', this.pwa_register);
+			document.addEventListener('SW_ready', this.pwa_ready);
+			document.addEventListener('SW_update_found', this.pwa_update_found);
+			document.addEventListener('SW_update_ready', this.pwa_show_update);
+			document.addEventListener('SW_offline', this.pwa_offline);
+
+			// if install is available?
+			let self = this;
+			setTimeout( function(){
+				self.pwa_show_install();
+			}, self.attrs.install.timeToShow );
+
+		},
+
+
 	},
 	mounted(){		
-		let self = this;
-		setTimeout( function(){
-			self.pwa_show_install();
-		}, self.attrs.install.timeToShow );
-		self.$root.$on('install', self.pwa_show_install );
+
+		this.pwa_init_events();
+
+		// let self = this;
+		// setTimeout( function(){
+		// 	self.pwa_show_install();
+		// }, self.attrs.install.timeToShow );
+		// self.$root.$on('install', self.pwa_show_install );
+
+		// setTimeout( function(){
+		// 	self.pwa_show_update();
+		// }, self.attrs.install.timeToShow );
 	},
 }
 </script>
