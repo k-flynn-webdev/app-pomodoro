@@ -207,6 +207,7 @@ export default {
 			this.app.finished = false;
 		},
 		finished : function(){
+			disableNoSleep();
 			let self = this;
 			self.app.time = self.app.timer;
 			setTimeout( function(){

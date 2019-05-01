@@ -1,7 +1,7 @@
 if (workbox) {
-    console.log(`Workbox is loaded`);
+	console.log(`Workbox is loaded`);
 
-    workbox.precaching.precacheAndRoute(self.__precacheManifest);
+	workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
 	// // install new service worker when ok, then reload page.
 	self.addEventListener('message', msg=>{
@@ -20,7 +20,7 @@ if (workbox) {
 
 } 
 else {
-    console.log(`Workbox didn't load`);
+	console.log(`Workbox didn't load`);
 }
 
 

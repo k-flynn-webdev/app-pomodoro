@@ -43,6 +43,19 @@ let attrs = {
 	time_change : 1
 }
 
+
+
+let bgWorker = null;
+let bgWorkerAllowed = false;
+
+if (process.env.NODE_ENV === 'production') {
+	if (window.Worker) {
+		bgWorkerAllowed = true;
+	}
+}
+
+
+
 export const timer = {
 
 	data(){
@@ -76,8 +89,13 @@ export const timer = {
 				this.vars.timer.timeGoal = timeIn_S + this.vars.timer.goal;
 
 				tick( this.vars.timer );
-				// workerInternal = new Worker("@/helper/m_timer_worker.js");
-				// workerInternal.postMessage( this.vars.timer );
+
+				if( bgWorkerAllowed ){
+					bgWorker = new Worker('./web-worker.js');
+					bgWorker.postMessage( [ true, this.vars.timer.goal ] );
+					bgWorker.onmessage = this.vars.timer.toDone;
+					console.log('message to bg worker sent. start');
+				}
 			}
 		},	
 		timer_resume : function(){
@@ -90,14 +108,28 @@ export const timer = {
 				this.vars.timer.timeGoal = timeIn_S + diffToAdd;
 				
 				tick( this.vars.timer );
-				// workerInternal = new Worker("@/helper/m_timer_worker.js");
-				// workerInternal.postMessage( this.vars.timer );
+
+				if( bgWorkerAllowed ){
+					bgWorker = new Worker('./web-worker.js');
+					bgWorker.postMessage( [ true, this.vars.timer.goal ] );
+					bgWorker.onmessage = this.vars.timer.toDone;
+					console.log('message to bg worker sent. resume');
+				}
 			}
 		},			
 		timer_stop : function(){
 			clearTimeout( timerInternal );
-			// workerInternal = null;
-		},		
+
+			if( bgWorkerAllowed && bgWorker !== null){
+				bgWorker.postMessage( [ false ] );
+				bgWorker.terminate();
+				console.log('bg worker terminated.');
+				bgWorker = null;
+				console.log('message to bg worker sent. stop');
+			}
+		},	
+
+
 		timer_clear : function(){
 			this.vars.timer.current = 0;
 			this.vars.timer.goal = 0;
