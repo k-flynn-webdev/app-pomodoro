@@ -30,93 +30,42 @@ function hasWorker(){
 
 
 
-
-
-
-
 if (process.env.NODE_ENV === 'production') {
 	register(`${process.env.BASE_URL}service-worker.js`, {
 		ready (registration) {
 			setWorker(registration);
 			if( !hasWorker() ){ return; }
 			document.dispatchEvent(ev_sw_ready);
-			
-
-			// console.log('App is being served from cache by a service worker. \n For more details, visit https://goo.gl/AFskqB');
 		},
 		registered (registration) {
 			setWorker(registration);
 			if( !hasWorker() ){ return; }
 			document.dispatchEvent(ev_sw_register);
-
-			// console.log('Service worker has been registered.');
-			// console.log('registration');
-			// console.log(registration);
-			
-			
-			// document.dispatchEvent(ev_sw_register);
-
-
 		},
 		cached (registration) {
 			setWorker(registration);
-			
-
-
-			// console.log('Content has been cached for offline use.');
-
 		},
 		updatefound (registration) {
 			setWorker(registration);
 			if( !hasWorker() ){ return; }			
 			document.dispatchEvent(ev_sw_update_found);
-
-
-
-			// console.log('New content is downloading.');
-
 		},
 		updated (registration) {
 			setWorker(registration);
 			if( !hasWorker() ){ return; }			
 			document.dispatchEvent(ev_sw_update_ready);
 
-			console.log('adding sw update accept function.');
 			document.addEventListener('SW_update_accept', function(){
-				console.log('sw update accept function triggered.');
 				registration.waiting.postMessage({action: "skipWaiting"});
 			});
-
-
-			// console.log('New content is available; please refresh.');
-			
-			// emit from here to app dialog?
-
-			// return result and acton it
-
-			// document.dispatchEvent(ev_sw_update, registration);
-
-
-			// let confirmationResult = confirm("New content found! Do you want to reload the app?")
-			// if (confirmationResult) registration.waiting.postMessage({action: "skipWaiting"})
-			
-			// console.log( registration );
 		},
 		offline () {
 			if( !hasWorker() ){ return; }			
 			document.dispatchEvent(ev_sw_offline);
-			
-
-
-			// console.log('No internet connection found. App is running in offline mode.');
 		},
 		error (error) {
 			// console.error('Error during service worker registration:', error);
 		}
 	})
-
-
-
-
 
 }

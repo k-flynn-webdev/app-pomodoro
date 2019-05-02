@@ -16,7 +16,6 @@ function tick( input ){
 	input.current = input.goal - check;
 
 	if( check <= 0){
-		console.log('timer finished (s)');
 		input.toDone( input.current, input.goal );
 	}
 
@@ -56,6 +55,9 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
+import NoSleep from 'nosleep.js';
+var noSleep = new NoSleep();
+
 export const timer = {
 
 	data(){
@@ -84,6 +86,7 @@ export const timer = {
 			if( this.vars.timer.current !== this.vars.timer.goal ){
 
 				this.timer_stop();
+				noSleep.enable();
 				
 				let timeIn_S = Date.now() / 1000;
 				this.vars.timer.timeGoal = timeIn_S + this.vars.timer.goal;
@@ -94,13 +97,13 @@ export const timer = {
 					bgWorker = new Worker('./web-worker.js');
 					bgWorker.postMessage( [ true, this.vars.timer.goal ] );
 					bgWorker.onmessage = this.vars.timer.toDone;
-					console.log('message to bg worker sent. start');
 				}
 			}
 		},	
 		timer_resume : function(){
 			if( this.vars.timer.current !== this.vars.timer.goal ){
 
+				noSleep.enable();
 				// find the diff in ticks before completion
 
 				let diffToAdd = this.vars.timer.goal - this.vars.timer.current;
@@ -108,24 +111,23 @@ export const timer = {
 				this.vars.timer.timeGoal = timeIn_S + diffToAdd;
 				
 				tick( this.vars.timer );
+				
 
 				if( bgWorkerAllowed ){
 					bgWorker = new Worker('./web-worker.js');
 					bgWorker.postMessage( [ true, this.vars.timer.goal ] );
 					bgWorker.onmessage = this.vars.timer.toDone;
-					console.log('message to bg worker sent. resume');
 				}
 			}
 		},			
 		timer_stop : function(){
 			clearTimeout( timerInternal );
+			noSleep.disable();
 
 			if( bgWorkerAllowed && bgWorker !== null){
 				bgWorker.postMessage( [ false ] );
 				bgWorker.terminate();
-				console.log('bg worker terminated.');
 				bgWorker = null;
-				console.log('message to bg worker sent. stop');
 			}
 		},	
 
