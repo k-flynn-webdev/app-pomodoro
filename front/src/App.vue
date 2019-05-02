@@ -24,6 +24,7 @@
 
 		<c-app-version></c-app-version>
 
+		<c-footer></c-footer>
 
 		<div class="board z-inverse">
 
@@ -75,7 +76,7 @@
 
 		</c-div-bg-reveal>
 
-	</div>	
+	</div>
 
 </template>
 
@@ -103,6 +104,7 @@ import TimeNumbers from '@/components/c_time_numbers.vue';
 import TimeControl from '@/components/c_time_control.vue';
 import TimeControlVisual from '@/components/c_time_control_visual.vue';
 import TimeOptions from '@/components/c_time_options.vue';
+import Footer from '@/components/c_footer.vue';
 
 import { timer } from '@/mixins/m_timer.js';
 
@@ -212,6 +214,7 @@ export default {
 		'c-time-options' : TimeOptions,
 		'c-time-control' : TimeControl,
 		'c-time-control-visual' : TimeControlVisual,
+		'c-footer' : Footer,
 	},
 }
 </script>

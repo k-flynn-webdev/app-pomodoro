@@ -1,35 +1,44 @@
 <template>
-	
-	<div ref="parent">
-	
-		<footer ref="footer">
 
-			<div class="dark footer">	
+	<footer 
+		class="anim-6 colour-bg-inv"
+		v-bind:class="{ 'is-active' : display }"> 
 
-				<div class="center-auto-h width-85">
-					
-					<div class="content text-center">
-						<p class="text-light">Made with 
+		<div 
+			class="footer-content center-auto-h width-85 anim-6"
+			v-bind:class="{ 'is-active' : inner }">
 
-							<span>
 
-								<svg class="" height="100%" viewBox="0 0 907 828" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><path d="M730.084,312.85c4.226,113.133 -40.828,236.381 -79.883,320.702c-29.137,63.033 -92.165,103.467 -161.607,103.675c-58.148,0.184 -129.832,0.398 -188.066,0.573c-68.886,0.206 -131.752,-39.215 -161.569,-101.314c-43.597,-90.793 -96.522,-224.663 -88.059,-325.713" style="fill:none;stroke-width:100px;"/><path d="M83.339,352.99l634.919,-1.948" style="fill:none;stroke-width:75px;"/><path d="M244.11,87.064l-54.656,150.983" style="fill:none;stroke-width:75px;"/><path d="M463.777,37.5l-79.086,206.267" style="fill:none;stroke-width:75px;"/><path d="M618.892,124.663l-49.707,118.199" style="fill:none;stroke-width:75px;"/><path d="M730.433,429.13l137.329,0c0,0 27.947,188.444 -226.001,233.406" style="fill:none;stroke-width:75px;"/><path d="M103.65,802.194l606.437,0" style="fill:none;stroke-width:50px;"/></svg>
+			<div class="title text-small text-center">
+				<p class="colour-fill-bg">Made with 
 
-							</span> 
-							by 
+					<span>
 
-							<a class="" href="https://github.com/k-flynn-webdev"> k-flynn-webdev </a>
+						<svg 
+							class="icon" 
+							viewBox="0 0 907 828" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							xmlns:serif="http://www.serif.com/">
 
-						</p>
-					</div>
+							<path class="" d="M730.084,312.85c4.226,113.133 -40.828,236.381 -79.883,320.702c-29.137,63.033 -92.165,103.467 -161.607,103.675c-58.148,0.184 -129.832,0.398 -188.066,0.573c-68.886,0.206 -131.752,-39.215 -161.569,-101.314c-43.597,-90.793 -96.522,-224.663 -88.059,-325.713"/>
+							<path class="" d="M710,410.13l137.329,0c0,0 27.947,188.444 -226.001,233.406"/>
 
-				</div>
+						</svg>
 
+					</span> 
+					by 
+
+					<a class="colour-fill-accent" target="_blank" href="https://github.com/k-flynn-webdev"> k-flynn-webdev </a>
+
+				</p>
 			</div>
 
-		</footer>	
+		</div>
 
-	</div>
+	</footer>
 
 </template>
 
@@ -37,12 +46,56 @@
 
 export default {
 	name: 'cFooter',
+	data(){
+		return {
+			display : false,
+			inner : false,
+			times : {
+				in : 50,
+				mid : 5*1000,
+				out : 400,
+			},
+		}
+	},	
+	methods : {
+		showFooter : function(){
+			let self = this;
+
+			if( !self.display ){
+				setTimeout( function(){
+					self.display = true;
+				}, self.times.in );
+
+				setTimeout( function(){
+					self.inner = true;
+				}, self.times.out );
+
+				setTimeout( function(){
+					self.hideFooter();
+				}, self.times.mid );
+			}
+		},
+		hideFooter : function(){
+			let self = this;
+
+			if( self.display ){
+				setTimeout( function(){
+					self.inner = false;
+				}, self.times.in );
+
+				setTimeout( function(){
+					self.display = false;
+				}, self.times.out );
+			}
+		},
+	},
 	mounted(){
-		document.body.appendChild( this.$refs.footer );
+		this.$root.$on('footer-show', this.showFooter );
+		this.$root.$on('footer-hide', this.hideFooter );
 	},
 	beforeDestroy(){
-		document.body.removeChild( this.$refs.footer );	
-		this.$refs.parent.appendChild( this.$refs.footer );
+		this.$root.$off('footer-show' );
+		this.$root.$off('footer-hide' );
 	},
 }
 
@@ -50,22 +103,39 @@ export default {
 
 <style scoped >
 
-	footer { 
-		margin-top: auto;
-		align-self: flex-end;
+	footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		width: 100%;
+		z-index: 1;
+		overflow: hidden;
+		opacity: 0;
+		pointer-events: none;
 	}
-	.footer {
+	footer.is-active{
+		opacity: 1;
 	}
-	.footer .content {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+
+
+	.footer-content {
+		pointer-events: visible;
+		opacity: 0;
+		transform: translateY(4rem);
 	}
-	.footer .content svg {
-		margin: 0 0.1rem;
-		height: 1rem;
+	.footer-content.is-active {
+		transform: translateY(0);
+		opacity: 1;
 	}
-	.footer .content svg path{
+
+
+	.footer-content div{
+		margin: .25rem;
 	}
+	.icon {
+		transform: translateY(0) scale(1.5);
+		width: 2rem;
+	}
+
 </style>
 

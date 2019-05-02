@@ -3,8 +3,8 @@
 	<div class="app-version">
 		<p 
 			class="text text-small colour-minor"
-			v-on:click=showInstall>
-				Ver : {{ version }}	
+			v-on:click=showFooter>
+				V : {{ version }}	
 		</p>
 	</div>
 
@@ -19,8 +19,8 @@ export default {
 		}
 	},
 	methods : {
-		showInstall : function(){
-			this.$root.$emit('install');
+		showFooter : function(){
+			this.$root.$emit('footer-show');
 		},
 		getVersion : function(){
 			this.version = process.env.VUE_APP_VERSION || '0.0.0';
