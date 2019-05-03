@@ -98,20 +98,24 @@ export default {
 		position: absolute;
 		right: 0;
 		transform: translateY(-50%) scale(0.4);
+		z-index: 2;
 	}	
 	.value.main {
 		transform: scale(1);
+		z-index: 1;
 	}	
 	.value.son {
 		position: absolute;
 		right: 0;
 		transform: translateY(50%) scale(0.4);
+		z-index: 0;
 	}
 	.value.grandson {
 		position: absolute;
 		right: 0;
 		transform: translateY(60%) scale(0.2);
 		opacity: 0;
+		z-index: -1;
 	}
 
 
@@ -162,9 +166,9 @@ export default {
 	}
 	@keyframes anim-tick-son-keys {
 		0% {
-			color: var( --colour-inv );
+			color: var( --colour );
 			transform: translateY(0) scale(1);
-		}	
+		}
 		90% {
 			transform: translateY(50%) scale(.4);
 		}
@@ -175,9 +179,9 @@ export default {
 	}
 	@keyframes anim-tick-son-keys-inv {
 		0% {
-			color: var( --colour );
+			color: var( --colour-inv );
 			transform: translateY(0) scale(1);
-		}	
+		}			
 		90% {
 			transform: translateY(50%) scale(.4);
 		}
