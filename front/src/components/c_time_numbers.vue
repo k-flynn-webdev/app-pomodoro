@@ -1,38 +1,36 @@
 <template>
 
-	<div>
 		
-		<div class="timer"
-			v-bind:class=getSize>
+	<div class="timer"
+		v-bind:class=getSize>
 
-			<c-time-number
-				v-if=hasHours
-				v-bind:time_values=getHours>
-				<template v-slot:default>
-					H
-				</template>
-			</c-time-number>
+		<c-time-number
+			v-if=hasHours
+			v-bind:time_values=getHours>
+			<template v-slot:default>
+				H
+			</template>
+		</c-time-number>
 
-			<c-time-number
-				v-if=hasMins
-				v-bind:style=getMargin
-				v-bind:time_values=getMins>
-				<template v-slot:default>
-					M
-				</template>
-			</c-time-number>
+		<c-time-number
+			v-if=hasMins
+			v-bind:style=getMargin
+			v-bind:time_values=getMins>
+			<template v-slot:default>
+				M
+			</template>
+		</c-time-number>
 
-			<c-time-number
-				v-if=hasSeconds
-				v-bind:time_values=getSeconds>
-				<template v-slot:default>
-					S
-				</template>
-			</c-time-number>
-
-		</div>
+		<c-time-number
+			v-if=hasSeconds
+			v-bind:time_values=getSeconds>
+			<template v-slot:default>
+				S
+			</template>
+		</c-time-number>
 
 	</div>
+
 
 </template>
 
@@ -178,6 +176,21 @@ export default {
 	.timer {
 		position: relative;
 		pointer-events: none;
+		
+		/*padding-left: 3rem;*/
+		/*padding-right: 3rem;*/
+	}
+
+	.number-is-large.timer {
+		padding-top: 3rem;
+		/*max-width: 90vw;*/
+	}
+	.number-is-med.timer {
+		/*padding: 0 1rem;*/
+		/*padding: 1rem;*/
+	}
+	.number-is-small.timer {
+
 	}
 
 </style>

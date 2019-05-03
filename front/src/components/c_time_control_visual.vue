@@ -194,11 +194,13 @@ export default {
 	}
 
 	.controllers {
-		width: 100%;
+		width: 100%;		
 	}
 
 	.ic {
-		height: 5rem;
+		margin: .5rem;
+		padding: 0;		
+		height: 3.5rem;
 		fill-rule:evenodd;
 		clip-rule:evenodd;
 		stroke-linejoin:round;
@@ -212,6 +214,10 @@ export default {
 		pointer-events: none;
 	}
 
+	.is-near .ic{
+		opacity: 0;
+		pointer-events: none;
+	}
 
 /*	@keyframes anim-timer-ticker {
 		0% {

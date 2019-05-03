@@ -128,7 +128,7 @@ export default {
 			attrs : {
 				timers :{
 					break : 4.5*60,
-					work : 24*60,
+					work : 61*60,
 					tickChange : 2,
 				},
 
@@ -245,15 +245,23 @@ export default {
 
 	.item-numbers {
 		flex-grow: 1;
+		min-width: 45vmin;
 	}
 	.item-control {
-		flex-grow: 1;
+		flex-grow: 0;
+		max-width: 60vmin;
 	}
 
 
 	.item {
-		width: 15rem;
 		margin: auto;
+	}
+
+	.item:nth-child(odd) {
+		/*background-color: grey;*/
+	}
+	.item:nth-child(even) {
+		/*background-color: purple;*/
 	}
 
 </style>

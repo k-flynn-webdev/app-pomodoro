@@ -2,7 +2,7 @@
 
 	<div class="app-version">
 		<p 
-			class="text text-small colour-minor"
+			class="text text-small text-bold colour-minor"
 			v-on:click=showFooter>
 				V : {{ version }}	
 		</p>
@@ -40,7 +40,7 @@ export default {
 		z-index: 1;
 	}
 	.app-version .text {
-		margin: 1rem;
+		margin: .66rem;
 		padding: 0;
 	}
 

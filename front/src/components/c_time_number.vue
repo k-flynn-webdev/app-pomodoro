@@ -86,13 +86,29 @@ export default {
 
 	.number-is-large .header-number {
 		font-size: calc( var( --header-screen-large ) * 1.5);
+		font-size: 18vw;
 	}
 	.number-is-med .header-number {
-		font-size: calc( var( --header-screen-large ) * 2.1);
+		font-size: calc( var( --header-screen-large ) * 2);
+		font-size: 18vw;
+		font-size: 16vmax;
 	}
 	.number-is-small .header-number {
 		font-size: calc( var( --header-screen-large ) * 2.7);
+		font-size: 25vmax;
 	}
+
+	/*@media all and (orientation:portrait) {
+
+		.number-is-med .header-number {
+			font-size: calc( var( --header-screen-large ) * 2);
+			font-size: 25vw;
+		}
+
+	}*/
+
+
+
 
 	.value.father {
 		position: absolute;
@@ -108,14 +124,14 @@ export default {
 		position: absolute;
 		right: 0;
 		transform: translateY(50%) scale(0.4);
-		z-index: 0;
+		z-index: .1;
 	}
 	.value.grandson {
 		position: absolute;
 		right: 0;
 		transform: translateY(60%) scale(0.2);
 		opacity: 0;
-		z-index: -1;
+		z-index: 0;
 	}
 
 
