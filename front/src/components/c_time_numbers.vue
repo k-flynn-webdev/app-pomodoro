@@ -2,7 +2,8 @@
 
 	<div>
 		
-		<div class="timer">
+		<div class="timer"
+			v-bind:class=getSize>
 
 			<c-time-number
 				v-if=hasHours
@@ -13,8 +14,8 @@
 			</c-time-number>
 
 			<c-time-number
-				style="margin: 0 1rem;"
 				v-if=hasMins
+				v-bind:style=getMargin
 				v-bind:time_values=getMins>
 				<template v-slot:default>
 					M
@@ -22,7 +23,6 @@
 			</c-time-number>
 
 			<c-time-number
-
 				v-if=hasSeconds
 				v-bind:time_values=getSeconds>
 				<template v-slot:default>
@@ -59,7 +59,24 @@ export default {
 		input : Number,
 	},
 	computed : {
-
+		getSize : function(){
+			if( this.hasHours ){
+				return 'number-is-large';
+			} else if( this.hasMins ){
+				return 'number-is-med';
+			} else {
+				return 'number-is-small';
+			}
+		},
+		getMargin : function(){
+			if( this.hasHours ){
+				return {'margin' : '0 ' + 2 + 'rem'};
+			} else if( this.hasMins ){
+				return {'margin-right' : 2 + 'rem'};
+			} else {
+				return {'margin' : '0' };
+			}
+		},		
 		hasHours : function(){
 			if(this.start > 59*60){
 				return true;
