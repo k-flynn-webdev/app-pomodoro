@@ -1,7 +1,7 @@
 <template>
 
 	<div 
-		class="center-force item-buttons anim-3"
+		class="center-force1 item-buttons anim-3"
 		v-bind:class="{'is-active': getDisplay}">
 		
 		<button 
@@ -13,7 +13,7 @@
 			</p>
 		</button>
 
-		<div style="width:1rem;height:1rem;"></div>
+		<div style="width:1rem;height:1rem;display: inline-block;"></div>
 
 		<button 
 			class="button colour-bg-inv anim-3"
@@ -171,10 +171,12 @@ export default {
 		min-width: unset;
 		padding: .1rem .5rem;
 		border-radius: 1rem;
+		display: inline-block;
 	}
 
 	.item-buttons {
-		margin: 0;
+		position: absolute;
+		margin: 1.2rem;
 		padding: 0;
 		z-index: 1;
 		pointer-events: none;
