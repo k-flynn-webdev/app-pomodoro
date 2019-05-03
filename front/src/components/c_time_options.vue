@@ -166,21 +166,21 @@ export default {
 </script>
 
 <style scoped>
-	
+
+	.item-buttons {
+		position: absolute;
+		margin: .66rem;
+		padding: 0;
+		z-index: 1;
+		pointer-events: none;
+		opacity: 0.1;
+	}
+
 	.button {
 		min-width: unset;
 		padding: .1rem .5rem;
 		border-radius: 1rem;
 		display: inline-block;
-	}
-
-	.item-buttons {
-		position: absolute;
-		margin: 1.2rem;
-		padding: 0;
-		z-index: 1;
-		pointer-events: none;
-		opacity: 0.1;
 	}
 
 	.is-active {
