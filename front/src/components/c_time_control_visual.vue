@@ -282,10 +282,10 @@ export default {
 	}
 
 .clock-fade-enter-active {
-	animation: anim-tick-clock-keys-in 1s cubic-bezier(0.4, 0, 0.02, 1);
+	animation: anim-tick-clock-keys-in .5s cubic-bezier(0.4, 0, 0.02, 1);
 }
 .clock-fade-leave-active {
-	animation: anim-tick-clock-keys-out 1s cubic-bezier(0.4, 0, 0.02, 1);
+	animation: anim-tick-clock-keys-out .5s cubic-bezier(0.4, 0, 0.02, 1);
 }
 .clock-fade-enter {
 	opacity: 0;
@@ -308,6 +308,9 @@ export default {
 		opacity: 0;
 		transform: translateY(-3.5rem) scale(.4);
 	}
+	50% {
+		opacity: 0.1;
+	}	
 	66% {
 		transform: translateY(-.2rem) scale(.9);
 	}
@@ -327,6 +330,9 @@ export default {
 		transform: translateY(1rem) scale(.75);
 		fill: hsla(200,5%,50%,1) !important;
 	}
+	50% {
+		opacity: 0.1;
+	}	
 	90% {
 		opacity: 0;
 		transform: translateY(3.5rem) scale(.2);

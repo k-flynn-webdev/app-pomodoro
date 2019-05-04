@@ -6,12 +6,13 @@
 			class="switch colour-bg-inv"
 			v-on:click=next_Scheme>
 
-			<div 
+			<div
 				class="icon"
 				v-for="(item, index) in schemes">
 
 				<svg			
 					class="styles colour-fill-bg"
+					v-bind:data-index="index"
 					height="100%" 
 					viewBox="0 0 101 168" 
 					version="1.1" 

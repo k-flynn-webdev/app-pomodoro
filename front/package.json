@@ -1,6 +1,6 @@
 {
   "name": "app_pomodoro",
-  "version": "0.0.91",
+  "version": "0.0.95",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
