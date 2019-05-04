@@ -1,31 +1,39 @@
 <template>
+	
+	<transition appear name="slide-fade">
 
-	<div 
-		class="center-force1 item-buttons anim-3"
-		v-bind:class="{'is-active': getDisplay}">
-		
-		<button 
-			class="button colour-bg-inv anim-3"
-			v-bind:class="{'colour-accent': iswork, 'border' : !iswork}"
-			v-on:click=button_work>
-			<p class="text colour-fill-bg">
-				work
-			</p>
-		</button>
+		<div 
+			class="item-buttons anim-3">
 
-		<div style="width:1rem;height:1rem;display: inline-block;"></div>
+			<div
+				class="inner anim-3"
+				v-bind:class="{'is-active': isactive}">
+				
+				<button 
+					class="button colour-bg-inv anim-3"
+					v-bind:class="{'colour-accent': iswork, 'border' : !iswork}"
+					v-on:click=button_work>
+					<p class="text colour-fill-bg">
+						work
+					</p>
+				</button>
 
-		<button 
-			class="button colour-bg-inv anim-3"
-			v-bind:class="{'colour-accent': isbreak, 'border' : !isbreak}"
-			v-on:click=button_break>
-			<p class="text colour-fill-bg">
-				break
-			</p>
-		</button>
+				<div style="width:1rem;height:1rem;display: inline-block;"></div>
 
-	</div>	
+				<button 
+					class="button colour-bg-inv anim-3"
+					v-bind:class="{'colour-accent': isbreak, 'border' : !isbreak}"
+					v-on:click=button_break>
+					<p class="text colour-fill-bg">
+						break
+					</p>
+				</button>
 
+			</div>
+
+		</div>
+
+	</transition>
 
 </template>
 
@@ -77,7 +85,7 @@ export default {
 	name: 'cTimeOptions',
 	data(){
 		return {
-			display : false,
+			active : false,
 			mode : '',
 		}
 	},
@@ -86,8 +94,8 @@ export default {
 		attrs : Object,
 	},
 	computed : {
-		getDisplay : function(){
-			return this.display;
+		isactive : function(){
+			return this.active;
 		},
 		isbreak : function(){
 			if( this.mode === 'break'){
@@ -103,12 +111,12 @@ export default {
 		},				
 	},
 	methods : {
-		mode_display : function( input ){
+		mode_active : function( input ){
 			 if( input === 'options-on' ){
-				this.display = true;
+				this.active = true;
 			 } 
 			 if( input === 'options-off' ){
-				this.display = false;
+				this.active = false;
 			 } 
 		},
 		button_break : function(){
@@ -160,7 +168,7 @@ export default {
 	},
 	mounted(){
 		this.button_work();
-		this.$root.$on('mode_display', this.mode_display);
+		this.$root.$on('mode_display', this.mode_active);
 	},
 }
 </script>
@@ -168,12 +176,20 @@ export default {
 <style scoped>
 
 	.item-buttons {
+		transition-delay: .1s;
 		position: absolute;
 		margin: .66rem;
 		padding: 0;
 		z-index: 1;
 		pointer-events: none;
-		opacity: 0.1;
+	}
+
+	.item-buttons .inner {
+		opacity: .1;
+	}
+	.is-active.inner {
+		opacity: 1;
+		pointer-events: auto;
 	}
 
 	.button {
@@ -181,11 +197,6 @@ export default {
 		padding: .1rem .5rem;
 		border-radius: 1rem;
 		display: inline-block;
-	}
-
-	.is-active {
-		opacity: 1;
-		pointer-events: auto;
 	}
 
 

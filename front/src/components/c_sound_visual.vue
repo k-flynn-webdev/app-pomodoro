@@ -1,29 +1,33 @@
 <template>
 
-	<div 
-		class="sound">
+	<transition appear name="slide-fade">
 
-		<button
-			class="button sound-icon "
-			v-on:click=sound_toggle>
+		<div 
+			class="sound anim-6">
 
-			<svg
-				v-bind:class="{ 'is-active colour-fill-accent' : getDisplay }"			
-				class="sound-ic anim-3 colour-fill-bg"
-				viewBox="0 0 224 224" 
-				version="1.1"
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
+			<button
+				class="button sound-icon anim-3"
+				v-on:click=sound_toggle>
 
-				<path d="M112.206,0.28c61.57,0 111.557,49.987 111.557,111.557c0,61.571 -49.987,111.558 -111.557,111.558c-61.571,0 -111.558,-49.987 -111.558,-111.558c0,-61.57 49.987,-111.557 111.558,-111.557Zm0,140.131c9.607,0 17.407,7.8 17.407,17.408c0,9.607 -7.8,17.408 -17.407,17.408c-9.608,0 -17.408,-7.801 -17.408,-17.408c0,-9.608 7.8,-17.408 17.408,-17.408Zm27.5,-77.21c-17.436,-19.333 -37.564,-19.333 -55,0c-17.436,19.333 -24.808,69.08 -24.808,69.08l104.615,0c0,0 -7.371,-49.747 -24.807,-69.08Z"/>
+				<svg
+					v-bind:class="{ 'is-active colour-fill-accent' : getDisplay }"			
+					class="sound-ic anim-3 colour-fill-bg"
+					viewBox="0 0 224 224" 
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg" 
+					xmlns:xlink="http://www.w3.org/1999/xlink" 
+					xml:space="preserve" 
+					xmlns:serif="http://www.serif.com/">
 
-			</svg>
+					<path d="M112.206,0.28c61.57,0 111.557,49.987 111.557,111.557c0,61.571 -49.987,111.558 -111.557,111.558c-61.571,0 -111.558,-49.987 -111.558,-111.558c0,-61.57 49.987,-111.557 111.558,-111.557Zm0,140.131c9.607,0 17.407,7.8 17.407,17.408c0,9.607 -7.8,17.408 -17.407,17.408c-9.608,0 -17.408,-7.801 -17.408,-17.408c0,-9.608 7.8,-17.408 17.408,-17.408Zm27.5,-77.21c-17.436,-19.333 -37.564,-19.333 -55,0c-17.436,19.333 -24.808,69.08 -24.808,69.08l104.615,0c0,0 -7.371,-49.747 -24.807,-69.08Z"/>
 
-		</button>
+				</svg>
 
-	</div>
+			</button>
+
+		</div>
+
+	</transition>	
 
 </template>
 
@@ -60,6 +64,7 @@ export default {
 <style scoped>
 
 	.sound{
+		transition-delay: .7s;
 		position: absolute;
 		top: 0;
 		right: 0;

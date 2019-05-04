@@ -19,6 +19,25 @@
 }
 
 
+
+
+/*transition anims */
+.appear-enter-active {}
+.appear-leave-active {}
+.appear-enter, .appear-leave-to {
+	opacity: 0;
+	transform: translateY(-.33rem);
+}
+
+.slide-fade-enter-active {}
+.slide-fade-leave-active {}
+.slide-fade-enter, .slide-fade-leave-to {
+	opacity: 0;
+	transform: translateY(-.33rem);
+}
+/*transition anims */
+	
+
 .delay-1:nth-child(1){
 	animation-delay: 0.1s;
 }

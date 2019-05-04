@@ -19,8 +19,9 @@ function tick( input ){
 		input.toDone( input.current, input.goal );
 	}
 
-
-	input.toUpdate( input.current, input.goal );
+	if( input.toUpdate !== undefined ){
+		input.toUpdate( input.current, input.goal );
+	}
 
 	// keep going?
 	if( input.current < input.goal){

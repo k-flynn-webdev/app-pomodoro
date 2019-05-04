@@ -1,98 +1,123 @@
 <template>
+	
+	<transition appear name="slide-fade">
 
-	<div class="controllers"
-		v-bind:class="{ 'is-near' : display.near }">
+		<div class="controllers anim-3"
+			v-bind:class="{ 'is-near' : display.near }">
 
-		<button
-			v-if=display.play
-			class="button ic"
-			v-on:click=play_control>
+			<div class="left">
 
-			<svg
-				class="colour-fill-bg"
-				height="100%" 
-				viewBox="0 0 224 224" 
-				version="1.1" 
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
+				<transition name="clock-fade">
 
-				<path d="M112.434,0.799c61.571,0 111.558,49.988 111.558,111.558c0,61.57 -49.987,111.558 -111.558,111.558c-61.57,0 -111.557,-49.988 -111.557,-111.558c0,-61.57 49.987,-111.558 111.557,-111.558Zm78.276,111.558l-124.936,81.046l0,-162.092l124.936,81.046Z"/>
+					<button
+						v-if=display.play
+						class="button ic play"
+						v-on:click=play_control>
 
-			</svg>
+						<svg
+							class="colour-fill-bg"
+							height="100%" 
+							viewBox="0 0 224 224" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							xmlns:serif="http://www.serif.com/">
 
+							<path d="M112.434,0.799c61.571,0 111.558,49.988 111.558,111.558c0,61.57 -49.987,111.558 -111.558,111.558c-61.57,0 -111.557,-49.988 -111.557,-111.558c0,-61.57 49.987,-111.558 111.557,-111.558Zm78.276,111.558l-124.936,81.046l0,-162.092l124.936,81.046Z"/>
 
-		</button>
+						</svg>
 
-		<button
-			v-if=display.resume
-			class="button ic"
-			v-on:click=resume_control>
+					</button>
 
-			<svg
-				class="colour-fill-bg"
-				height="100%" 
-				viewBox="0 0 224 224" 
-				version="1.1" 
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
+				</transition>
 
-				<path d="M112.434,0.799c61.571,0 111.558,49.988 111.558,111.558c0,61.57 -49.987,111.558 -111.558,111.558c-61.57,0 -111.557,-49.988 -111.557,-111.558c0,-61.57 49.987,-111.558 111.557,-111.558Zm78.276,111.558l-124.936,81.046l0,-162.092l124.936,81.046Z"/>
+				<transition name="clock-fade">
 
-			</svg>
+					<button
+						v-if=display.pause
+						class="button ic pause"
+						v-on:click=pause_control>
 
-		</button>
+						<svg
+							class="colour-fill-bg"
+							height="100%" 
+							viewBox="0 0 224 224" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							xmlns:serif="http://www.serif.com/">
 
-		<button
-			v-if=display.pause
-			class="button ic"
-			v-on:click=pause_control>
+							<path d="M112.434,0.499c61.571,0 111.558,49.987 111.558,111.558c0,61.57 -49.987,111.557 -111.558,111.557c-61.57,0 -111.557,-49.987 -111.557,-111.557c0,-61.571 49.987,-111.558 111.557,-111.558Zm-10,42.422l-40,0l0,137l40,0l0,-137Zm60,0l-40,0l0,137l40,0l0,-137Z"/>
 
-			<svg
-				class="colour-fill-bg"
-				height="100%" 
-				viewBox="0 0 224 224" 
-				version="1.1" 
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
+						</svg>
 
-				<path d="M112.434,0.499c61.571,0 111.558,49.987 111.558,111.558c0,61.57 -49.987,111.557 -111.558,111.557c-61.57,0 -111.557,-49.987 -111.557,-111.557c0,-61.571 49.987,-111.558 111.557,-111.558Zm-10,42.422l-40,0l0,137l40,0l0,-137Zm60,0l-40,0l0,137l40,0l0,-137Z"/>
+					</button>
 
-			</svg>
+				</transition>
+				
+				<transition name="clock-fade">
 
-		</button>
+					<button
+						v-if=display.resume
+						class="button ic resume"
+						v-on:click=resume_control>
 
-		<button
-			v-if=display.stop
-			class="button ic"
-			v-on:click=stop_control>
-			
-			<svg
-				class="colour-fill-bg"
-				height="100%" 
-				viewBox="0 0 224 224" 
-				version="1.1" 
-				xmlns="http://www.w3.org/2000/svg" 
-				xmlns:xlink="http://www.w3.org/1999/xlink" 
-				xml:space="preserve" 
-				xmlns:serif="http://www.serif.com/">
+						<svg
+							class="colour-fill-bg"
+							height="100%" 
+							viewBox="0 0 224 224" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							xmlns:serif="http://www.serif.com/">
 
-				<path d="M112.55,0.799c61.57,0 111.557,49.988 111.557,111.558c0,61.57 -49.987,111.558 -111.557,111.558c-61.571,0 -111.558,-49.988 -111.558,-111.558c0,-61.57 49.987,-111.558 111.558,-111.558Zm52.307,52.922l-104.615,0l0,116l104.615,0l0,-116Zm0,0l0,116l0,-116Z"/>
+							<path d="M112.434,0.799c61.571,0 111.558,49.988 111.558,111.558c0,61.57 -49.987,111.558 -111.558,111.558c-61.57,0 -111.557,-49.988 -111.557,-111.558c0,-61.57 49.987,-111.558 111.557,-111.558Zm78.276,111.558l-124.936,81.046l0,-162.092l124.936,81.046Z"/>
 
-			</svg>
+						</svg>
 
-		</button>
+					</button>
 
-		
+				</transition>	
 
+			</div>
 
+			<div class="divider"></div>
 
-	</div>
+			<div class="right">
+
+				<transition name="clock-fade">
+
+					<button
+						v-if=display.stop
+						class="button ic stop"
+						v-on:click=stop_control>
+						
+						<svg
+							class="colour-fill-bg"
+							height="100%" 
+							viewBox="0 0 224 224" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							xmlns:serif="http://www.serif.com/">
+
+							<path d="M112.55,0.799c61.57,0 111.557,49.988 111.557,111.558c0,61.57 -49.987,111.558 -111.557,111.558c-61.571,0 -111.558,-49.988 -111.558,-111.558c0,-61.57 49.987,-111.558 111.558,-111.558Zm52.307,52.922l-104.615,0l0,116l104.615,0l0,-116Zm0,0l0,116l0,-116Z"/>
+
+						</svg>
+
+					</button>
+
+				</transition>
+				
+			</div>
+
+		</div>
+
+	</transition>	
 
 </template>
 
@@ -188,25 +213,62 @@ export default {
 
 <style scoped >
 	
+	.controllers {
+		width: 100%;
+		transition-delay: 1.3s;
+		/*overflow: hidden;*/
+		position: relative;
+
+		margin: 0;
+		padding: 0;
+	}
+
+	.controllers .left, .controllers .right{
+		display: inline-block;
+		min-height: 3.5rem;
+		min-width: 3.5rem;
+		padding: 0;
+		margin: 0;
+		position: relative;
+	}
+	.controllers .divider {
+		display: inline-block;
+		width: 1rem;
+		height: 1rem;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+
+
+	.controllers .left {		
+		/*background-color: purple;		*/
+	}
+	.controllers .right {
+		/*background-color: yellow;*/
+	}
+
 	button {
 		min-width: unset;
 		background-color: unset;
-	}
-
-	.controllers {
-		width: 100%;		
+		margin: 0;
+		padding: 0;
+		/*transition: .3s ease;	*/
 	}
 
 	.ic {
-		margin: .5rem;
-		padding: 0;		
 		height: 3.5rem;
 		fill-rule:evenodd;
 		clip-rule:evenodd;
 		stroke-linejoin:round;
 		stroke-miterlimit:1.4;
 		opacity: 1;
-		transition: .5s;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 
 	.is-near .ic{
@@ -214,20 +276,62 @@ export default {
 		pointer-events: none;
 	}
 
-	.is-near .ic{
-		opacity: 0;
-		pointer-events: none;
+	.ic.play {
+		/*background-color: green;*/
+		/*position: ab*/
 	}
 
-/*	@keyframes anim-timer-ticker {
-		0% {
-			transform: translateX(0);
-		}		
-		100% {
-			transform: translateX(100%);
-		}
-	}*/
+.clock-fade-enter-active {
+	animation: anim-tick-clock-keys-in 1s cubic-bezier(0.4, 0, 0.02, 1);
+}
+.clock-fade-leave-active {
+	animation: anim-tick-clock-keys-out 1s cubic-bezier(0.4, 0, 0.02, 1);
+}
+.clock-fade-enter {
+	opacity: 0;
+	transform: translateY(-2rem) scale(.4);
+}
+.clock-fade-enter-to {
+	/*opacity: 1;*/
+}
+.clock-fade-leave {
+	/*opacity: 0;*/
+}
+.clock-fade-leave-to {
+	transform: translateY(2rem) scale(.2);
+	opacity: 0;
+}
 
+
+@keyframes anim-tick-clock-keys-in {
+	0% {
+		opacity: 0;
+		transform: translateY(-3.5rem) scale(.4);
+	}
+	66% {
+		transform: translateY(-.2rem) scale(.9);
+	}
+	90% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes anim-tick-clock-keys-out {
+	0% {
+		opacity: 1;
+		fill: hsla(200,5%,50%,1) !important;
+		transform: translateY(0) scale(1);
+	}
+	33% {
+		transform: translateY(1rem) scale(.75);
+		fill: hsla(200,5%,50%,1) !important;
+	}
+	90% {
+		opacity: 0;
+		transform: translateY(3.5rem) scale(.2);
+	}
+}
 
 </style>
 

@@ -26,55 +26,56 @@
 
 		<c-footer></c-footer>
 
-		<div class="board z-inverse">
-
-			<div class="container colour-bg-inv">
-
-				<c-sound-visual>
-				</c-sound-visual>
-
-				<c-time-numbers
-					class="item item-numbers"
-					v-bind:start=app.timer
-					v-bind:input=app.time>
-				</c-time-numbers>
 
 
-				<c-time-control-visual
-					class="item item-control">
-				</c-time-control-visual>
+			<div class="board z-inverse">
 
-			</div>
+				<div class="container colour-bg-inv">
 
-		</div>
+					<c-sound-visual>
+					</c-sound-visual>
+
+					<c-time-numbers
+						class="item item-numbers"
+						v-bind:start=app.timer
+						v-bind:input=app.time>
+					</c-time-numbers>
 
 
-		<c-div-bg-reveal
-			class="board"
-			v-bind:progress=app.time
-			v-bind:goal=app.timer>
+					<c-time-control-visual
+						class="item item-control">
+					</c-time-control-visual>
 
-			<div 
-				class="container colour-bg-inv"
-				v-bind:class="{ 'colour-accent' : app.finished }">
-
-				<c-sound-visual>
-				</c-sound-visual>
-
-				<c-time-numbers
-					class="item item-numbers"
-					v-bind:start=app.timer
-					v-bind:input=app.time>		
-				</c-time-numbers>
-		
-
-				<c-time-control-visual
-					class="item item-control">
-				</c-time-control-visual>
+				</div>
 
 			</div>
 
-		</c-div-bg-reveal>
+			<c-div-bg-reveal
+				class="board"
+				v-bind:progress=app.time
+				v-bind:goal=app.timer>
+
+				<div 
+					class="container colour-bg-inv"
+					v-bind:class="{ 'colour-accent' : app.finished }">
+
+					<c-sound-visual>
+					</c-sound-visual>
+
+					<c-time-numbers
+						class="item item-numbers"
+						v-bind:start=app.timer
+						v-bind:input=app.time>
+					</c-time-numbers>
+			
+
+					<c-time-control-visual
+						class="item item-control">
+					</c-time-control-visual>
+
+				</div>
+
+			</c-div-bg-reveal>
 
 	</div>
 
@@ -263,6 +264,10 @@ export default {
 	.item:nth-child(even) {
 		/*background-color: purple;*/
 	}
+
+
+
+	
 
 </style>
 

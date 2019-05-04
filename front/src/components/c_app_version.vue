@@ -1,12 +1,15 @@
 <template>
 
-	<div class="app-version">
-		<p 
-			class="text text-small text-bold colour-minor"
-			v-on:click=showFooter>
-				V : {{ version }}	
-		</p>
-	</div>
+	<transition appear name="slide-fade">
+		<div 
+			class="app-version anim-3">
+			<p 
+				class="text text-small text-bold colour-minor"
+				v-on:click=showFooter>
+					V : {{ version }}	
+			</p>
+		</div>
+	</transition>
 
 </template>
 
@@ -33,7 +36,9 @@ export default {
 </script>
 
 <style scoped>
+
 	.app-version {
+		transition-delay: 1.5s;
 		position: absolute;
 		right: 0;
 		bottom: 0;
@@ -43,5 +48,7 @@ export default {
 		margin: .66rem;
 		padding: 0;
 	}
+
+
 
 </style>
