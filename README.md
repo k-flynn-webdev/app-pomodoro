@@ -6,11 +6,12 @@ Vue.js and PWA service/web workers are used to make it a more useful offline app
 The aim was to have a simple easy to use UI and great simplified UX experience. Besides the timer read out I wanted a easy to glance at progress indicator. I think the background reverse is a great way to achieve this.
 
 ## Images
+![gifs](./docs/ticking.gif?raw=true "timer in action")
+![gifs](./docs/colourscheme.gif?raw=true "colour scheme")
 ![shot](./docs/shot_01.jpg?raw=true "shot 01")
 ![shot](./docs/shot_02.jpg?raw=true "shot 02")
 ![shot](./docs/shot_03.jpg?raw=true "shot 03")
-![gifs](./docs/ticking.gif?raw=true "timer in action")
-![gifs](./docs/colourscheme.gif?raw=true "colour scheme")
+
 
 ## To Run:
 Working example here: https://warm-chamber-83596.herokuapp.com/
