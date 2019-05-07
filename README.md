@@ -19,7 +19,7 @@ Working example here: https://kube-pomodoro.herokuapp.com/
 You can also run the app after downloading this repo. To run the app `NPM serve` via termincal/command line in order to run via the Vue-Cli. 
 
 ## TODO:
-Add a custom time as an option.
-Add a custom colour schemes as an option.
-Create and store a local options file.
-Custom chime sound as an option from local storage.
+- Add a custom time as an option.
+- Add a custom colour schemes as an option.
+- Create and store a local options file.
+- Custom chime sound as an option from local storage.
