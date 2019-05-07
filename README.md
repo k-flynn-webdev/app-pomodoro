@@ -14,7 +14,7 @@ The aim was to have a simple easy to use UI and great simplified UX experience. 
 
 
 ## To Run:
-Working example here: https://warm-chamber-83596.herokuapp.com/
+Working example here: https://kube-pomodoro.herokuapp.com/
 
 You can also run the app after downloading this repo. To run the app `NPM serve` via termincal/command line in order to run via the Vue-Cli. 
 
