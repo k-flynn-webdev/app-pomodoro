@@ -3,14 +3,14 @@ A simple pomodoro timer app, aiming to be easy to read, and nice looking.
 Vue.js and PWA service/web workers are used to make it a more useful offline app.
 
 ## Goals
-The aim was to have a simple easy to use UI and great simplified UX experience. BEsides the timer read out I wanted a easy to glance at progress indicator. I think the background reverse is a great way to achieve this.
+The aim was to have a simple easy to use UI and great simplified UX experience. Besides the timer read out I wanted a easy to glance at progress indicator. I think the background reverse is a great way to achieve this.
 
 ## Images
 ![shot](./docs/shot_01.jpg?raw=true "shot 01")
 ![shot](./docs/shot_02.jpg?raw=true "shot 02")
 ![shot](./docs/shot_03.jpg?raw=true "shot 03")
-![gifs](./docs/ticking.jpg?raw=true "timer in action")
-![gifs](./docs/colourscheme.jpg?raw=true "colour scheme")
+![gifs](./docs/ticking.gif?raw=true "timer in action")
+![gifs](./docs/colourscheme.gif?raw=true "colour scheme")
 
 ## To Run:
 Working example here: https://warm-chamber-83596.herokuapp.com/
