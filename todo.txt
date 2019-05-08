@@ -16,3 +16,4 @@ future:
 
 bugs: 	
 	possible issue with nosleep forcing chime sound to not play on some phones?
+	ios bug with the buttons frame reset part way between animations.
