@@ -7,6 +7,8 @@ server {
 
         server_name pomodoro.kubedev.co.uk www.pomodoro.kubedev.co.uk;
 
+        error_log /var/logs/nginx/error.log debug;
+        
         location / {
             try_files $uri $uri/ =404;
         }
