@@ -2,7 +2,7 @@ server {
         listen 80;
         listen [::]:80;
 
-        root /var/www/html;
+        root /home/user01/app-pomodoro/front/public/;
         index index.html index.htm index.nginx-debian.html;
 
         server_name pomodoro.kubedev.co.uk www.pomodoro.kubedev.co.uk;
