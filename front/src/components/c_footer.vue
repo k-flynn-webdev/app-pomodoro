@@ -31,7 +31,7 @@
 					</span> 
 					by 
 
-					<a class="colour-fill-accent" target="_blank" href="https://github.com/k-flynn-webdev"> k-flynn-webdev </a>
+					<a class="colour-fill-accent" target="_blank" title="Github" rel="noopener" href="https://github.com/k-flynn-webdev"> k-flynn-webdev </a>
 
 				</p>
 			</div>
