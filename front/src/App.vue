@@ -5,7 +5,16 @@
 
 		<c-pwa-notify></c-pwa-notify>
 
-		<c-sound></c-sound>	
+		<nav>
+
+			<c-time-options
+				v-bind:setTimer=setTimer
+				v-bind:attrs=attrs.timers>
+			</c-time-options>	
+
+			<c-sound></c-sound>	
+
+		</nav>
 
 		<c-colour-switch></c-colour-switch>	
 
@@ -17,10 +26,7 @@
 			v-bind:reset=reset>
 		</c-time-control>
 
-		<c-time-options
-			v-bind:setTimer=setTimer
-			v-bind:attrs=attrs.timers>
-		</c-time-options>
+
 
 		<c-app-version></c-app-version>
 
