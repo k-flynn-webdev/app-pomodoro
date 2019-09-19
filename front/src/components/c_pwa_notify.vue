@@ -41,7 +41,7 @@
 					class="button-option colour-bg"
 					v-for="(item, index) in window.buttons"
 					v-on:click.stop=item.onClick
-					aria-label="{{ item.label }}"
+					aria-label="button message"
 					ref='option'>
 
 					<p class="text1 colour-fill-bg-inv"> {{ item.label }}</p>
