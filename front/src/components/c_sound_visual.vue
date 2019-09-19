@@ -7,6 +7,8 @@
 
 			<button
 				class="button sound-icon anim-3"
+				ref="soundButton"
+				aria-label="turn sound off"
 				v-on:click=sound_toggle>
 
 				<svg
@@ -38,6 +40,7 @@ export default {
 	data(){
 		return {
 			display : true,
+			labels : ['turn sound on', 'turn sound off'],
 		}
 	},
 	computed : {
@@ -52,8 +55,12 @@ export default {
 		},
 		sound_set : function( input ){
 			this.display = input;
-		},			
-
+			if(input){
+				this.$refs.soundButton.setAttribute('aria-label', this.labels[1]);
+			} else {
+				this.$refs.soundButton.setAttribute('aria-label', this.labels[0]);
+			}
+		}
 	},
 	mounted(){
 		this.$root.$on('sound-set', this.sound_set );

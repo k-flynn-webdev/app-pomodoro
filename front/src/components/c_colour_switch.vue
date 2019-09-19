@@ -38,7 +38,7 @@
 
 <script>
 export default {
-	name: 'cAppVersion',
+	name: 'cColourSwitch',
 	data(){
 		return { 
 			scheme : 0,

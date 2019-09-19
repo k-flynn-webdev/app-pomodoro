@@ -6,6 +6,7 @@
 
 		<button
 			class="close button ic"
+			aria-label="close button"
 			v-on:click=pwa_hide>
 
 			<svg
@@ -40,6 +41,7 @@
 					class="button-option colour-bg"
 					v-for="(item, index) in window.buttons"
 					v-on:click.stop=item.onClick
+					aria-label={{ item.label }}
 					ref='option'>
 
 					<p class="text1 colour-fill-bg-inv"> {{ item.label }}</p>

@@ -11,6 +11,7 @@
 				
 				<button 
 					class="button colour-bg-inv anim-3"
+					aria-label="Set timer to work."
 					v-bind:class="{'colour-accent': iswork, 'border' : !iswork}"
 					v-on:click=button_work>
 					<p class="text colour-fill-bg">
@@ -22,6 +23,7 @@
 
 				<button 
 					class="button colour-bg-inv anim-3"
+					aria-label="Set timer to short break."
 					v-bind:class="{'colour-accent': isbreak, 'border' : !isbreak}"
 					v-on:click=button_break>
 					<p class="text colour-fill-bg">
