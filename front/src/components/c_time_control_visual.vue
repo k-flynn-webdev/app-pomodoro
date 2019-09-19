@@ -7,11 +7,12 @@
 
 			<div class="left">
 
-				<transition name="clock-fade">
-
+<!-- 				<transition name="clock-fade">
+ -->
 					<button
 						v-bind:class="{ 'show' : display.play }"
 						class="button ic play"
+						aria-label='start'
 						v-on:click=play_control>
 
 						<svg
@@ -30,13 +31,14 @@
 
 					</button>
 
-				</transition>
+				<!-- </transition> -->
 
-				<transition name="clock-fade">
+				<!-- <transition name="clock-fade"> -->
 
 					<button
 						v-bind:class="{ 'show' : display.pause }"
 						class="button ic pause"
+						aria-label='pause'
 						v-on:click=pause_control>
 
 						<svg
@@ -55,13 +57,14 @@
 
 					</button>
 
-				</transition>
+				<!-- </transition> -->
 				
-				<transition name="clock-fade">
+				<!-- <transition name="clock-fade"> -->
 
 					<button
 						v-bind:class="{ 'show' : display.resume }"
 						class="button ic resume"
+						aria-label='resume'
 						v-on:click=resume_control>
 
 						<svg
@@ -80,7 +83,7 @@
 
 					</button>
 
-				</transition>	
+				<!-- </transition>	 -->
 
 			</div>
 
@@ -88,11 +91,12 @@
 
 			<div class="right">
 
-				<transition name="clock-fade">
+				<!-- <transition name="clock-fade"> -->
 
 					<button
 						v-bind:class="{ 'show' : display.stop }"
 						class="button ic stop"
+						aria-label='stop'
 						v-on:click=stop_control>
 						
 						<svg
@@ -111,7 +115,7 @@
 
 					</button>
 
-				</transition>
+				<!-- </transition> -->
 				
 			</div>
 

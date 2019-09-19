@@ -5,7 +5,8 @@
 			class="app-version anim-3">
 			<p 
 				class="text text-small text-bold colour-minor"
-				v-on:click=showFooter>
+				v-on:click=showFooter
+				aria-label="version">
 					V : {{ version }}	
 			</p>
 		</div>
