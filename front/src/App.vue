@@ -7,6 +7,8 @@
 
 		<nav>
 
+			<h1></h1>
+			
 			<c-time-options
 				v-bind:setTimer=setTimer
 				v-bind:attrs=attrs.timers>
