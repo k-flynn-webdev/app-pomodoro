@@ -10,7 +10,7 @@
 				<transition name="clock-fade">
 
 					<button
-						v-if=display.play
+						v-bind:class="{ 'show' : display.play }"
 						class="button ic play"
 						v-on:click=play_control>
 
@@ -35,7 +35,7 @@
 				<transition name="clock-fade">
 
 					<button
-						v-if=display.pause
+						v-bind:class="{ 'show' : display.pause }"
 						class="button ic pause"
 						v-on:click=pause_control>
 
@@ -60,7 +60,7 @@
 				<transition name="clock-fade">
 
 					<button
-						v-if=display.resume
+						v-bind:class="{ 'show' : display.resume }"
 						class="button ic resume"
 						v-on:click=resume_control>
 
@@ -91,7 +91,7 @@
 				<transition name="clock-fade">
 
 					<button
-						v-if=display.stop
+						v-bind:class="{ 'show' : display.stop }"
 						class="button ic stop"
 						v-on:click=stop_control>
 						
@@ -145,48 +145,35 @@ export default {
 		mode_display : function( input ){
 
 			switch( input ){
-
 				case 'play':
-					this.display.play = false;
-					this.display.pause = true;
-					this.display.stop = true;
-					this.display.resume = false;
-					this.display.near = false;
+					this.set_controls([false,true,true,false,false]);
 					break;
 				case 'pause':
-					this.display.play = false;
-					this.display.pause = false;
-					this.display.stop = true;
-					this.display.resume = true;
-					this.display.near = false;
+					this.set_controls([false,false,true,true,false]);
 					break;
 				case 'resume':
-					this.display.play = false;
-					this.display.pause = true;
-					this.display.stop = true;
-					this.display.resume = false;
-					this.display.near = false;
+					this.set_controls([false,true,true,false,false]);
 					break;
 				case 'stop':
-					this.display.play = true;
-					this.display.pause = false;
-					this.display.stop = false;
-					this.display.resume = false;
-					this.display.near = false;
+					this.set_controls([true,false,false,false,false]);
+					break;
+				case 'finished':
+					this.set_controls([true,false,false,false,true]);
 					break;
 				case 'near':
 					this.display.near = true;
 					break;
-				case 'finished':
-					this.display.play = true;
-					this.display.pause = false;
-					this.display.stop = false;
-					this.display.resume = false;
-					this.display.near = true;
-					break;
-
 				default :
 			}
+		},
+
+		set_controls : function( args ){
+			if(args.length !== 5) return;
+			this.display.play = args[0];
+			this.display.pause = args[1];
+			this.display.stop = args[2];
+			this.display.resume = args[3];
+			this.display.near = args[4];
 		},
 
 		play_control : function(){
@@ -212,6 +199,25 @@ export default {
 </script>
 
 <style scoped >
+
+	.button {
+		transition: .5s;
+		backface-visibility: hidden;
+		pointer-events: none;
+		transform: translateY(-4rem);
+	}
+	.button.show {
+		pointer-events: all;
+		transform: translateY(0);
+	}
+
+	.button svg{
+		transition: .3s;
+		opacity: 0;
+	}
+	.button.show svg{
+		opacity: 1;
+	}	
 	
 	.controllers {
 		width: 100%;
@@ -262,7 +268,7 @@ export default {
 		clip-rule:evenodd;
 		stroke-linejoin:round;
 		stroke-miterlimit:1.4;
-		opacity: 1;
+		/*opacity: 1;*/
 
 		position: absolute;
 		top: 0;

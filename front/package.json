@@ -1,9 +1,9 @@
 {
   "name": "app_pomodoro",
-  "version": "0.0.95",
+  "version": "0.0.97",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode development --dashboard --https",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
